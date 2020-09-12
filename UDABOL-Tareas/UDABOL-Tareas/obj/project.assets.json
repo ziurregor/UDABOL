@@ -8,28 +8,31 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "/Users/rogerruizescobar/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\AlvaroJusto\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rogerruizescobar/Projects/UDABOL-Tareas/UDABOL-Tareas/UDABOL-Tareas.csproj",
+      "projectUniqueName": "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\UDABOL-Tareas\\UDABOL-Tareas\\UDABOL-Tareas.csproj",
       "projectName": "UDABOL-Tareas",
-      "projectPath": "/Users/rogerruizescobar/Projects/UDABOL-Tareas/UDABOL-Tareas/UDABOL-Tareas.csproj",
-      "packagesPath": "/Users/rogerruizescobar/.nuget/packages/",
-      "outputPath": "/Users/rogerruizescobar/Projects/UDABOL-Tareas/UDABOL-Tareas/obj/",
+      "projectPath": "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\UDABOL-Tareas\\UDABOL-Tareas\\UDABOL-Tareas.csproj",
+      "packagesPath": "C:\\Users\\AlvaroJusto\\.nuget\\packages\\",
+      "outputPath": "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\UDABOL-Tareas\\UDABOL-Tareas\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "/Users/rogerruizescobar/.config/NuGet/NuGet.Config"
+        "C:\\Users\\AlvaroJusto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -60,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+form label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+form label span {
+	display: inline-block;
+	width: 120px;
+}
+
+form label input[type="text"], form label input[type="password"] {
+	width: 190px;
+}
+
+#loginSection {
+	text-align: center;
+}
+
+#loginSection form {
+	width: 320px;
+}
+
+#loginSection form div {
+	text-align: center;
+}

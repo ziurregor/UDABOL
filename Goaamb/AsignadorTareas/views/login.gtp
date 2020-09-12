@@ -1,0 +1,7 @@
+<section id="loginSection">
+<form>
+<label><span>Usuario:</span><input type="text" value="" /></label>
+<label><span>Contraseña:</span><input type="password" value="" /></label>
+<div><input type="submit" value="Ingresar"/></div>
+</form>
+</section>
