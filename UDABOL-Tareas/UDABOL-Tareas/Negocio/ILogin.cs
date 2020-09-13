@@ -7,7 +7,7 @@ namespace Negocios
 {
     interface ILogin
     {
-        public Boolean AutenticacionUsuario(String usuario, String contrasena);
+        public IUsuario AutenticacionUsuario(String usuario, String contrasena);
         public IRol VerificarRolUsuario(IUsuario usuario);
 
         public List<ITarea> MostrarManejadorTareas(IRol rol);

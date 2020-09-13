@@ -7,11 +7,7 @@ namespace Negocios
 {
     public interface IManejadorTareas
     {
-        public List<ITarea> ListarTareas(IRol rol);
-
-        public Boolean ModificarTareaUsuarioComun(ITarea tarea);
-
-        public Boolean ModificarTareaSuperUsuario(ITarea tarea);
+        public List<ITarea> ListarTareas();
 
         public ITarea CrearTarea(IUsuario usuario, String nombreTarea, String Estado);
 

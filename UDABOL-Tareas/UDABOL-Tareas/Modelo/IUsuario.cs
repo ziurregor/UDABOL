@@ -1,6 +1,11 @@
-﻿namespace Modelo
+﻿using System;
+
+namespace Modelo
 {
-    public interface IUsuario
+    public interface IUsuario : IModelo
     {
+        public IUsuario ObtenerUnUsuario(string usuario, string contrasena);
+        IRol obtenerRol();
+        String ObtenerNombre();
     }
 }

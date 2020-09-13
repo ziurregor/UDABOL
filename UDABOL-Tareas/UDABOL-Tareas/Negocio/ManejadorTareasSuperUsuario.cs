@@ -17,17 +17,12 @@ namespace Negocios
             throw new NotImplementedException();
         }
 
-        public List<ITarea> ListarTareas(IRol rol)
+        public List<ITarea> ListarTareas()
         {
             throw new NotImplementedException();
         }
 
         public bool ModificarTareaSuperUsuario(ITarea tarea)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ModificarTareaUsuarioComun(ITarea tarea)
         {
             throw new NotImplementedException();
         }
