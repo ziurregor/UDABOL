@@ -29,8 +29,9 @@ function isLoggedIn() {
 	}
 	return false;
 }
-
+G.DBObj = false;
 $(window).on("load", function() {
+	G.DBObj = G.DB.startDB();
 	if (isLoggedIn()) {
 		loadTasks();
 	} else {
