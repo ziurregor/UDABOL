@@ -7,5 +7,6 @@ namespace Modelo
         public IUsuario ObtenerUnUsuario(string usuario, string contrasena);
         IRol obtenerRol();
         String ObtenerNombre();
+        string ObtenerId();
     }
 }
