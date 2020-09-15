@@ -1,0 +1,13 @@
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\bin\Debug\netcoreapp3.1\UDABOL-Tareas.exe
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\bin\Debug\netcoreapp3.1\UDABOL-Tareas.deps.json
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\bin\Debug\netcoreapp3.1\UDABOL-Tareas.runtimeconfig.json
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\bin\Debug\netcoreapp3.1\UDABOL-Tareas.runtimeconfig.dev.json
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\bin\Debug\netcoreapp3.1\UDABOL-Tareas.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\bin\Debug\netcoreapp3.1\UDABOL-Tareas.pdb
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\obj\Debug\netcoreapp3.1\UDABOL-Tareas.csprojAssemblyReference.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\obj\Debug\netcoreapp3.1\UDABOL-Tareas.AssemblyInfoInputs.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\obj\Debug\netcoreapp3.1\UDABOL-Tareas.AssemblyInfo.cs
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\obj\Debug\netcoreapp3.1\UDABOL-Tareas.csproj.CoreCompileInputs.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\obj\Debug\netcoreapp3.1\UDABOL-Tareas.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\obj\Debug\netcoreapp3.1\UDABOL-Tareas.pdb
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\UDABOL-Tareas\UDABOL-Tareas\obj\Debug\netcoreapp3.1\UDABOL-Tareas.genruntimeconfig.cache

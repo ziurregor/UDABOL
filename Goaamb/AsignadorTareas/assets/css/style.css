@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+html {
+	font-family: roboto, arial, sans-serif;
+	font-size: 18px;
+}
+
+form label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+form label span {
+	display: inline-block;
+	width: 120px;
+}
+
+form label input[type="text"], form label input[type="password"] {
+	width: 190px;
+	border: 1px solid black;
+	height: 26px;
+	font-size: 18px;
+	padding: 2px;
+}
+
+#loginSection form {
+	width: 320px;
+	height: 120px;
+	position: absolute;
+	left: calc(50% - 160px);
+	top: calc(50% - 60px);
+}
+
+#loginSection form div {
+	text-align: center;
+}

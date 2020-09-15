@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "UDABOL-Tareas/1.0.0": {
+        "runtime": {
+          "UDABOL-Tareas.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "UDABOL-Tareas/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
