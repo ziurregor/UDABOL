@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using Dao;
 
@@ -88,6 +89,40 @@ namespace Modelo
             tarea._usuario = (Usuario)(new Usuario()).Obtener(new KeyValuePair<string, string>("_id", columnas[3]));
             tarea._estado = columnas[4];
             return tarea;
+        }
+
+        internal String ObtenerValorCampo(string nombreCampo)
+        {
+            /*switch (nombreCampo)
+            {
+                case "id":
+                    return _id.ToString();
+
+                case "nombre":
+                    return _nombre;
+
+                case "fecha":
+                    return _fecha;
+
+                case "usuario":
+                    return _usuario.ObtenerNombre();
+                case "estado":
+                    return _estado;
+                default:
+                    return "";
+            }*/
+            // Reflection ---->>> Realiza una ingenieria Inversa... con la finalidad de estructurar una clase/objeto o un algo para minimizar procesos repetitivos.
+            Type tipo = this.GetType();
+            PropertyInfo propiedad = tipo.GetProperty(nombreCampo);
+            if (propiedad != null) {
+                return propiedad.GetValue(this).ToString();
+            }
+            return "";
+        }
+
+        internal void GuardarValorCampo(string nombreCampo, string valorCampo)
+        {
+            throw new NotImplementedException();
         }
     }
 }

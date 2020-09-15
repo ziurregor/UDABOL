@@ -4,40 +4,26 @@ using System.Text;
 using Modelo;
 using Util;
 
-namespace Negocios
+namespace Negocio
 {
     public class LoginConsola : ILogin
     {
-        IUsuario _usuario;
+        Usuario _usuario;
 
-        public void LoginUsuario() {
-            System.Console.Out.WriteLine("Ingrese un usuario:");
-            String _cadenaUsuario=System.Console.In.ReadLine();
-            System.Console.Out.WriteLine("Ingrese un contraseña:");
-            String _cadenaContrasena = System.Console.In.ReadLine();
+        public KeyValuePair<Usuario, List<ModeloBase>> LoginUsuario( String _cadenaUsuario,String _cadenaContrasena) {
             System.Console.Out.WriteLine("Se esta Autenticando espere por favor...");
-            IUsuario _usuario = AutenticacionUsuario(_cadenaUsuario, _cadenaContrasena);
-            IRol _rol = VerificarRolUsuario(_usuario);
-            List<ITarea> _listaTareas = MostrarManejadorTareas(_rol);
-            if (_listaTareas != null) {
-                System.Console.WriteLine("Fecha\tNombre\tUsuario\tEstado");
-                foreach (ITarea _tarea in _listaTareas)
-                {
-                    System.Console.WriteLine("%s\t%s\t%s\t%s",_tarea.ObtenerFecha(),_tarea.ObtenerNombre(),_tarea.ObtenerUsario().ObtenerNombre(),_tarea.ObtenerEstado());
-                }
-            }
-            else {
-                System.Console.WriteLine("Nada que listar");
-            }
+            Usuario _usuario = AutenticacionUsuario(_cadenaUsuario, _cadenaContrasena);
+            Rol _rol = VerificarRolUsuario(_usuario);
+            return new KeyValuePair<Usuario, List<ModeloBase>>(_usuario, MostrarManejadorTareas(_rol));
         }
 
-        public IUsuario AutenticacionUsuario(string usuario, string contrasena)
+        public Usuario AutenticacionUsuario(string usuario, string contrasena)
         {
             String _cadenaEncriptada = Utilidades.encriptarContrasena(usuario,contrasena);
             return this._usuario.ObtenerUnUsuario(usuario, _cadenaEncriptada);
         }
 
-        public List<ITarea> MostrarManejadorTareas(IRol rol)
+        public List<ModeloBase> MostrarManejadorTareas(Rol rol)
         {
             if (rol != null)
             {
@@ -55,10 +41,10 @@ namespace Negocios
             return null;
         }
 
-        public IRol VerificarRolUsuario(IUsuario usuario)
+        public Rol VerificarRolUsuario(Usuario usuario)
         {
             if (usuario != null) {
-                return usuario.obtenerRol();
+                return usuario.ObtenerRol();
             }
             return null;
 

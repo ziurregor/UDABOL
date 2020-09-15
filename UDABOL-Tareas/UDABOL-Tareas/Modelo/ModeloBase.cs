@@ -22,7 +22,7 @@ namespace Modelo
         // Insert Usuario(id,nombre,contrasena,estado)values(1,Fulanito de tal,******,Habilitado)
 
 
-        private ConexionTexto _conexion;
+        private IConexion _conexion;
 
 
 

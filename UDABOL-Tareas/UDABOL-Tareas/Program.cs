@@ -1,4 +1,5 @@
 ﻿using System;
+using Presentacion;
 
 namespace UDABOL_Tareas
 {
@@ -6,7 +7,7 @@ namespace UDABOL_Tareas
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Bienvenida.MostrarBienvenida()
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Modelo
     {
 
         private Int32 _id;//0
-        private String _nombre;//Fulanito De Tal
+        private String _nombre;//Super Usuario/Usuario Comun
 
 
         //Getters and Setter

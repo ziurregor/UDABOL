@@ -10,24 +10,24 @@ namespace Negocio
 {
     public class ManejadorTareasPadre:IManejadorTareas
     {
-        public List<ITarea> ListarTareas()
+        public List<ModeloBase> ListarTareas()
         {
-            return (new Tarea()).ListarTareas();
+            return (List<ModeloBase>)(new Tarea()).Listar();
         }
         //Nombre: Fulanito de tal
         //Usuario: 1
         //Estado: En Proceso
         //Reflection-----> Ingenieria Inversa de Objetos... se ve como estan construidos
-        public ITarea Modificar(Dictionary<String, String> camposAModificar, KeyValuePair<String,String> condicion)
+        public Tarea Modificar(Dictionary<String, String> camposAModificar, KeyValuePair<String,String> condicion)
         {
             String identificador = condicion.Key;
             String valorIdentificador = condicion.Value;
             Tarea _tarea = new Tarea();
             Type _tipo = _tarea.GetType();
             PropertyInfo[] _propiedadesTarea = _tipo.GetProperties();
-            List<ITarea> _listaTareas= (_tarea).ListarTareas();
+            List<ModeloBase> _listaTareas= (_tarea).Listar();
             if (_listaTareas != null) {
-                foreach (ITarea _tareaL in _listaTareas) {
+                foreach (Tarea _tareaL in _listaTareas) {
                     PropertyInfo _propiedadIdentificador = _tareaL.GetType().GetProperty(identificador);
 
                     if ( _propiedadIdentificador.GetValue(_tareaL).Equals(valorIdentificador)) {
