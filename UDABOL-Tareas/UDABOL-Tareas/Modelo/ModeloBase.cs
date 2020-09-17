@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Dao;
 
@@ -149,6 +150,11 @@ namespace Modelo
             }
             return false;
         }
+
+        public static Object darInstancia(Type tipo) {
+            return Activator.CreateInstance(tipo);
+        }
+
 
         public abstract string guardarTexto();
 

@@ -13,6 +13,7 @@ namespace Modelo
         private String _nombre;
         private Usuario _usuario;
         private String _estado;
+
         private ConexionTexto _conexion;
         public Tarea() {
             _conexion = new ConexionTexto();

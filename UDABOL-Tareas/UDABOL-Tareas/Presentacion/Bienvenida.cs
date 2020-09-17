@@ -26,10 +26,8 @@ namespace Presentacion
                         break;
                     case "2":
                         return;
-
                 }
             }
-
         }
     }
 }
