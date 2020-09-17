@@ -5,12 +5,15 @@ using Modelo;
 
 namespace Negocios
 {
+
     public interface IManejadorTareas
     {
-        public List<ITarea> ListarTareas();
+        public List<ModeloBase> ListarTareas();
+        // [Nombre:Fulanito de tal, Estado:Pendiente,Tarea:Limpiar Habitacion]------>SuperUsuario
+        // [Estado:En Proceso]------>Usuario Comun        
 
-        public ITarea CrearTarea(IUsuario usuario, String nombreTarea, String Estado);
+        // Update Tabla set camposAModificar where identificador=valorIdentificador
+        public Tarea ModificarTarea(Dictionary<String,String> camposAModificar,KeyValuePair<String,String> condicion);
 
-        public ITarea CrearTarea(IUsuario usuario, String nombreTarea);
     }
 }

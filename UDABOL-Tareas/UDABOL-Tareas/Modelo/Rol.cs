@@ -5,21 +5,23 @@ using System.Text;
 
 namespace Modelo
 {
-    class Rol : IRol
+    class Rol :ModeloBase
     {
 
         private Int32 _id;//0
-        private String _nombre;//Fulanito De Tal
+        private String _nombre;//Super Usuario/Usuario Comun
 
 
-        public String ObtenerNombre()
+        //Getters and Setter
+        public String ObtenerNombre()//Get
         {
             return _nombre;
         }
 
-        public void GuardarNombre(String nombre)
+        public void GuardarNombre(String nombre)//Set
         {
             _nombre=nombre;
+            //guardar Historial de modificacion del Nombre del Rol
         }
 
         public Int32 ObtenerId()
@@ -32,11 +34,13 @@ namespace Modelo
             _id = id;
         }
 
+        override
         public string guardarTexto()
         {
             return _id.ToString() + "\t" + _nombre.ToString();
         }
 
+        override
         public IObjetoTexto leerTexto(string texto)
         {
             String[] columnas = texto.Split("\t");
@@ -45,7 +49,6 @@ namespace Modelo
             rol._id = Int32.Parse(columnas[0]);
             rol._nombre = columnas[1];
             return rol;
-
         }
     }
 }

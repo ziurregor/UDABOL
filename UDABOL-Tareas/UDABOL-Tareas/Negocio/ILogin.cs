@@ -7,10 +7,10 @@ namespace Negocios
 {
     interface ILogin
     {
-        public IUsuario AutenticacionUsuario(String usuario, String contrasena);
-        public IRol VerificarRolUsuario(IUsuario usuario);
+        public Usuario AutenticacionUsuario(String usuario, String contrasena);
+        public Rol VerificarRolUsuario(Usuario usuario);
 
-        public List<ITarea> MostrarManejadorTareas(IRol rol);
+        public List<Tarea> MostrarManejadorTareas(Rol rol);
         
     }
 }

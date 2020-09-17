@@ -6,7 +6,7 @@ using System.Text;
 using Dao;
 using Modelo;
 
-namespace UDABOL_Tareas.Dao
+namespace Dao
 {
     class ConexionTexto : IConexion
     {
@@ -45,7 +45,7 @@ namespace UDABOL_Tareas.Dao
          * 
          */
 
-        public Boolean EliminarTabla(Int32 numeroLinea )
+        public Boolean EliminarRegistro(Int32 numeroLinea )
         {
 
 
@@ -66,14 +66,14 @@ namespace UDABOL_Tareas.Dao
             return true;
         }
 
-        public bool EscribirTabla( List<object> lista)
+        public bool EscribirTabla( List<ModeloBase> lista)
         {
             try
             {
                 if (lista != null )
                 {
                     String contenido = "";
-                    foreach (object _objeto in lista) {
+                    foreach (ModeloBase _objeto in lista) {
                         IObjetoTexto _objetoTexto = (IObjetoTexto)_objeto;
                          contenido+= _objetoTexto.guardarTexto()+"\n";
                     }
@@ -102,12 +102,12 @@ namespace UDABOL_Tareas.Dao
             return false;
         }
 
-        public List<object> LeerTabla()
+        public List<ModeloBase> LeerTabla()
         {
             try
             {
                 String[] lineas = _contenido.Split("\n");
-                List<object> lista = new List<object>();
+                List<ModeloBase> lista = new List<ModeloBase>();
                 for (int i=0;i<lineas.Length;i++) {
                     IObjetoTexto _objeto = (IObjetoTexto)Activator.CreateInstance(_tipo);
                     lista.Add(_objeto.leerTexto(lineas[i]));
