@@ -11,8 +11,12 @@ namespace Negocio
         public KeyValuePair<Usuario, List<ModeloBase>> LoginUsuario( String _cadenaUsuario,String _cadenaContrasena) {
             System.Console.Out.WriteLine("Se esta Autenticando espere por favor...");
             Usuario _usuario = AutenticacionUsuario(_cadenaUsuario, _cadenaContrasena);
-            Rol _rol = VerificarRolUsuario(_usuario);
-            return new KeyValuePair<Usuario, List<ModeloBase>>(_usuario, MostrarManejadorTareas(_rol));
+            if (_usuario != null)
+            {
+                Rol _rol = VerificarRolUsuario(_usuario);
+                return new KeyValuePair<Usuario, List<ModeloBase>>(_usuario, MostrarManejadorTareas(_rol));
+            }
+            return new KeyValuePair<Usuario, List<ModeloBase>>();
         }
 
         public Usuario AutenticacionUsuario(string usuario, string contrasena)

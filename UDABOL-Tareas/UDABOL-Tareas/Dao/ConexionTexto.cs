@@ -8,7 +8,7 @@ using Modelo;
 
 namespace Dao
 {
-    class ConexionTexto : IConexion
+    public class ConexionTexto : IConexion
     {
         private String _archivo;
         private String _contenido;

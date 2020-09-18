@@ -30,9 +30,13 @@ namespace Util
             System.Console.WriteLine(texto);
         }
 
-        public static String entrada()
+        public static String entrada(String texto)
         {
+            salida(texto);
             return System.Console.ReadLine();
         }
+
+
+
     }
 }

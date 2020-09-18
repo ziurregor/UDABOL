@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Dao;
 
 namespace Presentacion
 {
@@ -24,7 +25,8 @@ namespace Presentacion
                     case "1":
                         Login.MostrarLogin();
                         break;
-                    case "2":
+                    default:
+                        ConexionFactory.GuardarConexiones();
                         return;
                 }
             }

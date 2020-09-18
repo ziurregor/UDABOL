@@ -49,7 +49,11 @@ namespace Modelo
         {
 
             KeyValuePair<String, String> condicion = new KeyValuePair<string, string>("nombre",usuario);
-            return (Usuario)ModeloBase.Obtener(condicion,Type.GetType("Modelo.Usuario"));
+            Usuario _usuario= (Usuario)ModeloBase.Obtener(condicion,Type.GetType("Modelo.Usuario"));
+            if (_usuario != null && _usuario.ObtenerContraseña().Equals(cadenaEncriptada)) {
+                return _usuario;
+            }
+            return null;
         }
 
         public String ObtenerEstado()

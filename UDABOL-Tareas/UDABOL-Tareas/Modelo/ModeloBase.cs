@@ -29,15 +29,9 @@ namespace Modelo
 
 
         public ModeloBase() {
-            _conexion = new ConexionTexto();
-            _conexion.Conectar(this.GetType().Name+".txt",this.GetType());
+            _conexion = ConexionFactory.DarConexion(this.GetType());
         }
 
-
-
-        ~ModeloBase() {
-            _conexion.Guardar();
-        }
 
 
         public Boolean Crear(Dictionary<String,String> campos,List<ModeloBase> lista) {
