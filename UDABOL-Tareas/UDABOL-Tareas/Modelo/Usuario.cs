@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Modelo
 {
-    class Usuario : ModeloBase
+    public class Usuario : ModeloBase
     {
 
         private Int32 _id;
@@ -45,6 +45,13 @@ namespace Modelo
             _contrasena = contrasena;
         }
 
+        public static Usuario ObtenerUnUsuario(string usuario, string cadenaEncriptada)
+        {
+
+            KeyValuePair<String, String> condicion = new KeyValuePair<string, string>("nombre",usuario);
+            return (Usuario)ModeloBase.Obtener(condicion,Type.GetType("Modelo.Usuario"));
+        }
+
         public String ObtenerEstado()
         {
             return _estado;
@@ -72,17 +79,22 @@ namespace Modelo
             return _id + "\t" + _nombre + "\t" + _contrasena + "\t" + _estado + "\t"+_rol.ObtenerId().ToString() ;
         }
 
-        public override IObjetoTexto leerTexto(string texto)
+        public override ModeloBase leerTexto(string texto)
         {
             String[] columnas = texto.Split("\t");
-
-            Usuario usuario = new Usuario();
-            usuario._id = Int32.Parse(columnas[0]);
-            usuario._nombre = columnas[1];
-            usuario._contrasena = columnas[2];
-            usuario._estado = columnas[3];
-            usuario._rol = (Rol)(new Rol()).Obtener(new KeyValuePair<string, string>("_id",columnas[4])) ;
-            return usuario;
+            if (columnas.Length > 4)
+            {
+                Usuario usuario = new Usuario
+                {
+                    _id = Int32.Parse(columnas[0]),
+                    _nombre = columnas[1],
+                    _contrasena = columnas[2],
+                    _estado = columnas[3],
+                    _rol = (Rol)(new Rol()).Obtener(new KeyValuePair<string, string>("id", columnas[4]))
+                };
+                return usuario;
+            }
+            return null;
         }
     }
 }

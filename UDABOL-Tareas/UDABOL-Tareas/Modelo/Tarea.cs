@@ -6,7 +6,7 @@ using Dao;
 
 namespace Modelo
 {
-    class Tarea :ModeloBase
+    public class Tarea :ModeloBase
     {
         private Int32 _id;
         private String _fecha;
@@ -56,7 +56,7 @@ namespace Modelo
             _usuario=usuario;
         }
 
-        public Usuario ObtenerId()
+        public Int32 ObtenerId()
         {
             return _id;
         }
@@ -79,7 +79,7 @@ namespace Modelo
             return _id.ToString() + "\t" + _fecha + "\t" + _nombre + "\t" + _usuario.ObtenerId().ToString() + "\t" + _estado;
         }
         override
-        public IObjetoTexto leerTexto(string texto)
+        public ModeloBase leerTexto(string texto)
         {
             String[] columnas = texto.Split("\t");
 

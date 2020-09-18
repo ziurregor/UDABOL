@@ -8,6 +8,6 @@ namespace Modelo
     {
         public string guardarTexto();
 
-        public IObjetoTexto leerTexto(String texto);
+        public ModeloBase leerTexto(String texto);
     }
 }

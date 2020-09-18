@@ -5,14 +5,30 @@ using System.Text;
 
 namespace Modelo
 {
-    class Rol :ModeloBase
+    public class Rol :ModeloBase
     {
 
         private Int32 _id;//0
         private String _nombre;//Super Usuario/Usuario Comun
+        private Boolean _superUsuario;
 
 
         //Getters and Setter
+
+        public Boolean esSuperUsuario()//Get
+        {
+            return _superUsuario;
+        }
+
+        public Boolean ObtenerSuperUsuario() {
+            return esSuperUsuario();
+        }
+
+        public void GuardarSuperUsuario(Boolean superUsuario)//Set
+        {
+            _superUsuario = superUsuario;
+        }
+
         public String ObtenerNombre()//Get
         {
             return _nombre;
@@ -41,14 +57,19 @@ namespace Modelo
         }
 
         override
-        public IObjetoTexto leerTexto(string texto)
+        public ModeloBase leerTexto(string texto)
         {
             String[] columnas = texto.Split("\t");
-
-            Rol rol = new Rol();
-            rol._id = Int32.Parse(columnas[0]);
-            rol._nombre = columnas[1];
-            return rol;
+            if (columnas.Length > 2)
+            {
+                Rol rol = new Rol
+                {
+                    _id = Int32.Parse(columnas[0]),
+                    _nombre = columnas[1],
+                    _superUsuario=Boolean.Parse(columnas[2])
+                }; return rol;
+            }
+            return null;
         }
     }
 }

@@ -74,8 +74,7 @@ namespace Dao
                 {
                     String contenido = "";
                     foreach (ModeloBase _objeto in lista) {
-                        IObjetoTexto _objetoTexto = (IObjetoTexto)_objeto;
-                         contenido+= _objetoTexto.guardarTexto()+"\n";
+                         contenido+= _objeto.guardarTexto()+"\n";
                     }
                     File.WriteAllText(_archivo, contenido);
                     _contenido = contenido;
@@ -109,7 +108,7 @@ namespace Dao
                 String[] lineas = _contenido.Split("\n");
                 List<ModeloBase> lista = new List<ModeloBase>();
                 for (int i=0;i<lineas.Length;i++) {
-                    IObjetoTexto _objeto = (IObjetoTexto)Activator.CreateInstance(_tipo);
+                    ModeloBase _objeto = (ModeloBase)ModeloBase.darInstancia(_tipo);
                     lista.Add(_objeto.leerTexto(lineas[i]));
                 }
                 return lista;

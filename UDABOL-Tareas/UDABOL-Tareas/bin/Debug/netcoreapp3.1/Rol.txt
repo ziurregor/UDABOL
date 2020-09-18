@@ -1,0 +1,2 @@
+1	SuperUsuario	true
+2	UsuarioComun	false

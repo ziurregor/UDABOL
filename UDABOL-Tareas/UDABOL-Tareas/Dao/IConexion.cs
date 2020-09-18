@@ -11,7 +11,7 @@ namespace Dao
 
         public List<ModeloBase> LeerTabla();
 
-        public Boolean EscribirTabla(List<Object> lista);
+        public Boolean EscribirTabla(List<ModeloBase> lista);
 
 
         public Boolean EliminarRegistro(Int32 numeroLinea);

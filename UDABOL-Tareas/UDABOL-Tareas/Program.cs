@@ -7,7 +7,7 @@ namespace UDABOL_Tareas
     {
         static void Main(string[] args)
         {
-            Bienvenida.MostrarBienvenida()
+            Bienvenida.MostrarBienvenida();
         }
     }
 }

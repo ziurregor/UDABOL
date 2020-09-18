@@ -8,8 +8,6 @@ namespace Negocio
 {
     public class LoginConsola : ILogin
     {
-        Usuario _usuario;
-
         public KeyValuePair<Usuario, List<ModeloBase>> LoginUsuario( String _cadenaUsuario,String _cadenaContrasena) {
             System.Console.Out.WriteLine("Se esta Autenticando espere por favor...");
             Usuario _usuario = AutenticacionUsuario(_cadenaUsuario, _cadenaContrasena);
@@ -20,24 +18,13 @@ namespace Negocio
         public Usuario AutenticacionUsuario(string usuario, string contrasena)
         {
             String _cadenaEncriptada = Utilidades.encriptarContrasena(usuario,contrasena);
-            return this._usuario.ObtenerUnUsuario(usuario, _cadenaEncriptada);
+
+            return Usuario.ObtenerUnUsuario(usuario, _cadenaEncriptada);
         }
 
         public List<ModeloBase> MostrarManejadorTareas(Rol rol)
         {
-            if (rol != null)
-            {
-                if (rol.ObtenerNombre().Equals("SuperUsuario"))
-                {
-                    ManejadorTareasSuperUsuario usuario = new ManejadorTareasSuperUsuario();
-                    return usuario.ListarTareas();
-                }
-                else if (rol.ObtenerNombre().Equals("UsuarioComun"))
-                {
-                    ManejadorTareasSuperUsuario usuario = new ManejadorTareasSuperUsuario();
-                    return usuario.ListarTareas();
-                }
-            }
+            ManejadorTareas
             return null;
         }
 

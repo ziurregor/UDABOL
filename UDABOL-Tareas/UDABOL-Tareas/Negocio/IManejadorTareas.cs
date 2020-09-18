@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Modelo;
 
-namespace Negocios
+namespace Negocio
 {
 
     public interface IManejadorTareas
@@ -13,7 +13,7 @@ namespace Negocios
         // [Estado:En Proceso]------>Usuario Comun        
 
         // Update Tabla set camposAModificar where identificador=valorIdentificador
-        public Tarea ModificarTarea(Dictionary<String,String> camposAModificar,KeyValuePair<String,String> condicion);
+        public Tarea Modificar(Dictionary<String,String> camposAModificar,KeyValuePair<String,String> condicion);
 
     }
 }

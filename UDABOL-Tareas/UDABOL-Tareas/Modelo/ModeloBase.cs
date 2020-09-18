@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -112,17 +113,77 @@ namespace Modelo
 
 
         public ModeloBase Obtener(KeyValuePair<String,String> condicion) {
-            List<ModeloBase> lista = this.Listar();
-            Type tipo = this.GetType();
-            PropertyInfo[] propiedades = tipo.GetProperties();
-            foreach (ModeloBase objeto in lista) {
-                PropertyInfo propiedad = tipo.GetProperty(condicion.Key);
-                if (propiedad.GetValue(objeto).Equals(condicion.Value.ToString())) {
-                    return objeto;
+            return Obtener(condicion, this.GetType());
+        }
+
+        public static ModeloBase Obtener(KeyValuePair<String, String> condicion,String tipoModelo)
+        {
+            return Obtener(condicion, Type.GetType(tipoModelo));
+        }
+
+
+        public static ModeloBase Obtener(KeyValuePair<String, String> condicion,Type tipoModelo)
+        {
+
+            List<ModeloBase> lista = ((ModeloBase)Activator.CreateInstance(tipoModelo) ).Listar();
+            if (lista != null)
+            {
+                Type tipo = tipoModelo;
+                foreach (ModeloBase objeto in lista)
+                {
+
+                    Object valor=ObtenerCampoValor(objeto, condicion.Key);
+                   
+                    if (valor != null && valor.ToString().Equals(condicion.Value)) {
+                        return objeto;
+                    }
                 }
             }
             return null;
         }
+
+        public static Object ObtenerCampoValor(ModeloBase objeto,String campo) {
+            TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
+            MethodInfo metodo = objeto.GetType().GetMethod("Obtener"+textInfo.ToTitleCase(campo));
+            if (metodo != null) {
+                return metodo.Invoke(objeto, null);
+            }
+
+            return null;
+        }
+
+        public static Boolean GuardarCampoValor(ModeloBase objeto, String campo,String valor)
+        {
+            //TODO---->>> modificar campos
+            TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
+            MethodInfo metodo = objeto.GetType().GetMethod("Guardar" + textInfo.ToTitleCase(campo));
+            if (metodo != null)
+            {
+                ParameterInfo[] parametros = metodo.GetParameters();
+                if (parametros != null && parametros.Length>0) {
+                    String parametroTipoNombre = parametros[0].ParameterType.Name;
+                    Object parametroValor=null;
+                    switch (parametroTipoNombre)
+                    {
+                        case "Int32":
+                            parametroValor = Int32.Parse(valor);
+                            break;
+                        case "Modelo.Usuario":
+                            //parametroValor = Int32.Parse(valor);
+                            break;
+                        default:
+                            parametroValor = valor;
+                            break;
+                    }
+
+
+                    metodo.Invoke(objeto,new object[] { parametroValor });
+                }
+                return true;
+            }
+            return false;
+        }
+
 
 
         //delete from Usuario where id=2
@@ -155,9 +216,14 @@ namespace Modelo
             return Activator.CreateInstance(tipo);
         }
 
+        public static Object darInstancia(String tipo)
+        {
+            return Activator.CreateInstance(Type.GetType(tipo));
+        }
+
 
         public abstract string guardarTexto();
 
-        public abstract IObjetoTexto leerTexto(string texto);
+        public abstract ModeloBase leerTexto(string texto);
     }
 }
