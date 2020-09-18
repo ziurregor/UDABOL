@@ -28,7 +28,7 @@ namespace Modelo
 
 
 
-        public ModeloBase() {
+        public ModeloBase() {//Se pide el objeto correspondiente a cada Modelo que nos provee ConexionFactory
             _conexion = ConexionFactory.DarConexion(this.GetType());
         }
 
@@ -136,16 +136,22 @@ namespace Modelo
             return null;
         }
 
+        //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
+        // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
+        //ModeloBase.ObtenerCampoValor(rol,"nombre");
         public static Object ObtenerCampoValor(ModeloBase objeto,String campo) {
+            //ToTitleCase ---> PascalCase
             TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
             MethodInfo metodo = objeto.GetType().GetMethod("Obtener"+textInfo.ToTitleCase(campo));
             if (metodo != null) {
                 return metodo.Invoke(objeto, null);
             }
-
             return null;
         }
 
+        //Guarda el valor de un campo que pertenece a un modelo
+        //ModeloBase.GuardarCampoValor(usuario,"nombre"."rosario")
+        //usuario.GuardarNombre("rosario")
         public static Boolean GuardarCampoValor(ModeloBase objeto, String campo,String valor)
         {
             //TODO---->>> modificar campos
@@ -206,6 +212,10 @@ namespace Modelo
             return false;
         }
 
+        // Crear Una Instancia automaticamente
+        //ModeloBase.darInstancia("Modelo.Rol")----->new Rol()
+        //ModeloBase.darInstancia("Modelo.Usuario")----->new Usuario()
+        //Factory Method--->Patron de diseño
         public static Object darInstancia(Type tipo) {
             return Activator.CreateInstance(tipo);
         }
