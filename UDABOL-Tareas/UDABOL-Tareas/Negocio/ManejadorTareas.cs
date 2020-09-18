@@ -28,7 +28,7 @@ namespace Negocio
             }
             return tareaLista;
         }
-        public static List<ModeloBase> ListarTareas()
+        public List<ModeloBase> ListarTareas()
         {
             return (List<ModeloBase>)(new Tarea()).Listar();
         }

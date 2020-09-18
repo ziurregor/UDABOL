@@ -103,22 +103,20 @@ namespace Dao
 
         public List<ModeloBase> LeerTabla()
         {
+            List<ModeloBase> lista = new List<ModeloBase>();
             try
             {
                 String[] lineas = _contenido.Split("\n");
-                List<ModeloBase> lista = new List<ModeloBase>();
                 for (int i=0;i<lineas.Length;i++) {
                     ModeloBase _objeto = (ModeloBase)ModeloBase.darInstancia(_tipo);
                     lista.Add(_objeto.leerTexto(lineas[i]));
                 }
-                return lista;
-
             }
             catch (Exception ex)
             {
                 System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
             }
-            return null;
+            return lista;
         }
     }
 }

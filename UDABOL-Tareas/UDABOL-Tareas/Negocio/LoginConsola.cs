@@ -24,8 +24,7 @@ namespace Negocio
 
         public List<ModeloBase> MostrarManejadorTareas(Rol rol)
         {
-            ManejadorTareas
-            return null;
+            return (new ManejadorTareas()).ListarTareas();
         }
 
         public Rol VerificarRolUsuario(Usuario usuario)
