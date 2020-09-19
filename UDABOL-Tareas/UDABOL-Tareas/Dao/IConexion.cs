@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Modelo;
 
 namespace Dao
 {
@@ -8,12 +9,12 @@ namespace Dao
     {
         public Boolean Conectar(String cadenaDeConexion, Type tipo);
 
-        public List<Object> LeerTabla();
+        public List<ModeloBase> LeerTabla();
 
         public Boolean EscribirTabla(List<Object> lista);
 
 
-        public Boolean EliminarTabla(Int32 numeroLinea);
+        public Boolean EliminarRegistro(Int32 numeroLinea);
 
 
         public Boolean Guardar();

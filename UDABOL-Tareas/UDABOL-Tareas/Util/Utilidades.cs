@@ -25,5 +25,14 @@ namespace Util
                 return builder.ToString();
             }
         }
+
+        public static void salida(String texto) {
+            System.Console.WriteLine(texto);
+        }
+
+        public static String entrada()
+        {
+            return System.Console.ReadLine();
+        }
     }
 }
