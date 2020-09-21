@@ -23,6 +23,9 @@ namespace Modelo
         // Estado: Habilitado
         // Insert Usuario(id,nombre,contrasena,estado)values(1,Fulanito de tal,******,Habilitado)
 
+        private static Dictionary<String, List<ModeloBase>> listaDeListas;
+
+
 
         private IConexion _conexion;
 
@@ -125,11 +128,14 @@ namespace Modelo
                 Type tipo = tipoModelo;
                 foreach (ModeloBase objeto in lista)
                 {
+                    if (objeto != null)
+                    {
+                        Object valor = ObtenerCampoValor(objeto, condicion.Key);
 
-                    Object valor=ObtenerCampoValor(objeto, condicion.Key);
-                   
-                    if (valor != null && valor.ToString().Equals(condicion.Value)) {
-                        return objeto;
+                        if (valor != null && valor.ToString().Equals(condicion.Value))
+                        {
+                            return objeto;
+                        }
                     }
                 }
             }

@@ -108,6 +108,7 @@ namespace Dao
             {
                 String[] lineas = _contenido.Split("\n");
                 for (int i=0;i<lineas.Length;i++) {
+                    lineas[i] = lineas[i].Trim();
                     ModeloBase _objeto = (ModeloBase)ModeloBase.darInstancia(_tipo);
                     lista.Add(_objeto.leerTexto(lineas[i]));
                 }

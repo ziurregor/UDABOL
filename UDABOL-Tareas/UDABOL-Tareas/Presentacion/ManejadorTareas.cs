@@ -54,7 +54,17 @@ namespace Presentacion
         private static void CrearTarea(Usuario key)
         {
             Utilidades.salida("Creando una Tarea");
-            Utilidades.entrada("Ingresa un nombre para tu Tarea");
+            String tareaNombre=Utilidades.entrada("Ingresa un nombre para tu Tarea");
+
+            List<ModeloBase> listaUsuarios = ((Usuario)ModeloBase.darInstancia("Modelo.Usuario")).Listar();
+            int indice = 1;
+            foreach (ModeloBase objeto in listaUsuarios)
+            {
+                Utilidades.salida(indice+". "+((Usuario)objeto).ObtenerNombre());
+            }
+
+            String usuarioId = Utilidades.entrada("Seleccione un Usuario");
+
 
         }
 

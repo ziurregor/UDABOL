@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dao
 {
-    public class ConexionFactory //patron de diseño Factory....   Singleton..
+    public class ConexionFactory //patron de diseño Factory....   Singleton.....
     {
         private static Dictionary<String, ConexionTexto> modelos = new Dictionary<String, ConexionTexto>();
         public static ConexionTexto DarConexion(Type tipo) {
