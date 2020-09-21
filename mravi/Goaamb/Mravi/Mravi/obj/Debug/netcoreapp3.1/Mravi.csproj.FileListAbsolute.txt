@@ -1,0 +1,13 @@
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\bin\Debug\netcoreapp3.1\Mravi.exe
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\bin\Debug\netcoreapp3.1\Mravi.deps.json
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\bin\Debug\netcoreapp3.1\Mravi.runtimeconfig.json
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\bin\Debug\netcoreapp3.1\Mravi.runtimeconfig.dev.json
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\bin\Debug\netcoreapp3.1\Mravi.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\bin\Debug\netcoreapp3.1\Mravi.pdb
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\obj\Debug\netcoreapp3.1\Mravi.csprojAssemblyReference.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\obj\Debug\netcoreapp3.1\Mravi.AssemblyInfoInputs.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\obj\Debug\netcoreapp3.1\Mravi.AssemblyInfo.cs
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\obj\Debug\netcoreapp3.1\Mravi.csproj.CoreCompileInputs.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\obj\Debug\netcoreapp3.1\Mravi.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\obj\Debug\netcoreapp3.1\Mravi.pdb
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\mravi\Goaamb\Mravi\Mravi\obj\Debug\netcoreapp3.1\Mravi.genruntimeconfig.cache

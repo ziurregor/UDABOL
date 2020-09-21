@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Udabol_Tareas_Restful.Models;
+using Udabol_Tareas_Restful.Modelo;
 
 namespace Udabol_Tareas_Restful.Controllers
 {
@@ -13,7 +11,6 @@ namespace Udabol_Tareas_Restful.Controllers
     [ApiController]
     public class RolController : ControllerBase
     {
-        private readonly RolContext _context;
 
         public RolController(RolContext context)
         {

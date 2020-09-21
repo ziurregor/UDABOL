@@ -110,5 +110,8 @@ Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\obj\Debug\netcoreapp3.1\Udabol_Tareas_Restful.csproj.CoreCompileInputs.cache
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\obj\Debug\netcoreapp3.1\Udabol_Tareas_Restful.MvcApplicationPartsAssemblyInfo.cache
