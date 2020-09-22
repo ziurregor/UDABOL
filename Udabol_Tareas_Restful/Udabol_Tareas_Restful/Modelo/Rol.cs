@@ -14,7 +14,7 @@ namespace Modelo
 
         public string guardarTexto()
         {
-            return Id.ToString() + "\t" + Nombre.ToString()+"\t"+SuperUsuario.ToString();
+            return Id.ToString() + "\t" + Nombre+"\t"+SuperUsuario.ToString();
         }
 
         public IObjetoTexto leerTexto(string texto)

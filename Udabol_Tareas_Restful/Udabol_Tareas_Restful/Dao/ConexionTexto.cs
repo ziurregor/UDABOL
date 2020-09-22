@@ -74,7 +74,10 @@ namespace Dao
                 {
                     String contenido = "";
                     foreach (IObjetoTexto _objeto in lista) {
-                         contenido+= _objeto.guardarTexto()+"\n";
+                        if (_objeto != null)
+                        {
+                            contenido += _objeto.guardarTexto() + "\n";
+                        }
                     }
                     File.WriteAllText(_archivo, contenido);
                     _contenido = contenido;

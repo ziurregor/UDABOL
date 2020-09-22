@@ -24,14 +24,39 @@ namespace Modelo
         // Insert Usuario(id,nombre,contrasena,estado)values(1,Fulanito de tal,******,Habilitado)
 
 
-         public static Boolean Crear(Dictionary<String,String> campos,List<IObjetoTexto> lista,Type tipo) {
+        public static Boolean Crear(IObjetoTexto fuente)
+        {
+            Type tipo = fuente.GetType();
+            PropertyInfo[] propiedades = tipo.GetProperties();
 
+            Dictionary<String, String> campos = new Dictionary<String, String>();
+            foreach (PropertyInfo propiedadx in propiedades)
+            {
+                campos.Add(propiedadx.Name, propiedadx.GetValue(fuente).ToString());
+            }
+
+            return Crear(campos,tipo);
+        }
+
+        public static Boolean Crear(Dictionary<String,String> campos,Type tipo) {
+            List<IObjetoTexto> lista = Listar(tipo);
             PropertyInfo[] _propiedadesClase = tipo.GetProperties();
             IObjetoTexto objeto = darInstancia(tipo);
             foreach (PropertyInfo propiedad in _propiedadesClase) {
                 foreach (KeyValuePair<String,String> campo in campos) {
                     if (campo.Key.Equals(propiedad.Name)) {
-                        propiedad.SetValue(objeto, campo.Value);
+                        switch (propiedad.PropertyType.Name)
+                        {
+                            case "Int32":
+                                propiedad.SetValue(objeto, Int32.Parse(campo.Value));
+                                break;
+                            case "Boolean":
+                                propiedad.SetValue(objeto, Boolean.Parse(campo.Value));
+                                break;
+                            default:
+                                propiedad.SetValue(objeto, campo.Value);
+                                break;
+                        }
                     }
                 }
             }
@@ -45,12 +70,19 @@ namespace Modelo
 
         public static Boolean Modificar(IObjetoTexto fuente,String identificador) {
             Type tipo = fuente.GetType();
-            PropertyInfo propiedad = tipo.GetProperty("Id");
-            IObjetoTexto destino=Obtener(new KeyValuePair<string, string>(identificador, propiedad.GetValue(fuente).ToString()),tipo);
-            if (destino!=null) { 
+            PropertyInfo propiedad = tipo.GetProperty(identificador);
+            PropertyInfo[] propiedades = tipo.GetProperties();
 
+            KeyValuePair<String, String> condicion = new KeyValuePair<String, String>(identificador, propiedad.GetValue(fuente).ToString());
+            Dictionary<String, String> campos = new Dictionary<String, String>();
+            foreach (PropertyInfo propiedadx in propiedades)
+            {
+                if (propiedadx.Name != identificador) {
+                    campos.Add(propiedadx.Name,propiedadx.GetValue(fuente).ToString());
+                }
             }
-            return false;
+
+            return Modificar(campos,condicion,tipo);
         }
 
 
@@ -61,8 +93,9 @@ namespace Modelo
         // Update Usuario set nombre=Juana Perez,estado=Deshabilitado where id=2
 
 
-        public static Boolean Modificar(Dictionary<String,String> campos,KeyValuePair<String,String> condicion,List<IObjetoTexto> listaAModificar,Type tipo) {
+        public static Boolean Modificar(Dictionary<String,String> campos,KeyValuePair<String,String> condicion,Type tipo) {
             PropertyInfo[] _propiedadesClase = tipo.GetProperties();
+            List<IObjetoTexto> listaAModificar = Listar(tipo);
 
             foreach (IObjetoTexto objeto in listaAModificar) {
                 Type tipoObjeto = objeto.GetType();
@@ -144,61 +177,11 @@ namespace Modelo
             return null;
         }
 
-        //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
-        // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
-        //ModeloBase.ObtenerCampoValor(rol,"nombre");
-        public static Object ObtenerCampoValor(IObjetoTexto objeto,String campo) {
-            //ToTitleCase ---> PascalCase
-            TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
-            PropertyInfo propiedad = objeto.GetType().GetProperty(textInfo.ToTitleCase(campo));
-            if (propiedad != null) {
-                return propiedad.GetValue(objeto);
-            }
-            return null;
-        }
-
-        //Guarda el valor de un campo que pertenece a un modelo
-        //ModeloBase.GuardarCampoValor(usuario,"nombre"."rosario")
-        //usuario.GuardarNombre("rosario")
-        public static Boolean GuardarCampoValor(ModeloFactory objeto, String campo,String valor)
-        {
-            //TODO---->>> modificar campos
-            TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
-            MethodInfo metodo = objeto.GetType().GetMethod("Guardar" + textInfo.ToTitleCase(campo));
-            if (metodo != null)
-            {
-                ParameterInfo[] parametros = metodo.GetParameters();
-                if (parametros != null && parametros.Length>0) {
-                    String parametroTipoNombre = parametros[0].ParameterType.Name;
-                    Object parametroValor=null;
-                    switch (parametroTipoNombre)
-                    {
-                        case "Int32":
-                            parametroValor = Int32.Parse(valor);
-                            break;
-                        case "Modelo.Usuario":
-                            //parametroValor = Int32.Parse(valor);
-                            break;
-                        default:
-                            parametroValor = valor;
-                            break;
-                    }
-
-
-                    metodo.Invoke(objeto,new object[] { parametroValor });
-                }
-                return true;
-            }
-            return false;
-        }
-
-
-
         //delete from Usuario where id=2
 
-        public Boolean Eliminar(KeyValuePair<String, String> condicion, List<IObjetoTexto> listaAEliminar)
+        public static Boolean Eliminar(KeyValuePair<String, String> condicion, Type tipo)
         {
-            Type tipo = this.GetType();
+            List<IObjetoTexto> listaAEliminar = Listar(tipo);
             PropertyInfo[] _propiedadesClase = tipo.GetProperties();
 
             foreach (IObjetoTexto objeto in listaAEliminar)
@@ -231,6 +214,21 @@ namespace Modelo
         public static IObjetoTexto darInstancia(String tipo)
         {
             return (IObjetoTexto)Activator.CreateInstance(Type.GetType(tipo));
+        }
+
+        //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
+        // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
+        //ModeloBase.ObtenerCampoValor(rol,"nombre");
+        public static Object ObtenerCampoValor(IObjetoTexto objeto, String campo)
+        {
+            //ToTitleCase ---> PascalCase
+            TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
+            PropertyInfo propiedad = objeto.GetType().GetProperty(textInfo.ToTitleCase(campo));
+            if (propiedad != null)
+            {
+                return propiedad.GetValue(objeto);
+            }
+            return null;
         }
     }
 }
