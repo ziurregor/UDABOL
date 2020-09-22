@@ -12,7 +12,7 @@ namespace Modelo
             throw new NotImplementedException();
         }
 
-        public ModeloFactory leerTexto(string texto)
+        public IObjetoTexto leerTexto(string texto)
         {
             throw new NotImplementedException();
         }

@@ -73,7 +73,7 @@ namespace Dao
                 if (lista != null )
                 {
                     String contenido = "";
-                    foreach (ModeloFactory _objeto in lista) {
+                    foreach (IObjetoTexto _objeto in lista) {
                          contenido+= _objeto.guardarTexto()+"\n";
                     }
                     File.WriteAllText(_archivo, contenido);

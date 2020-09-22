@@ -14,12 +14,22 @@ namespace Modelo
 
         public string guardarTexto()
         {
-            throw new NotImplementedException();
+            return Id.ToString() + "\t" + Nombre.ToString()+"\t"+SuperUsuario.ToString();
         }
 
-        public ModeloFactory leerTexto(string texto)
+        public IObjetoTexto leerTexto(string texto)
         {
-            throw new NotImplementedException();
+            String[] columnas = texto.Split("\t");
+            if (columnas.Length > 2)
+            {
+                Rol rol = new Rol
+                {
+                    Id = Int32.Parse(columnas[0]),
+                    Nombre = columnas[1],
+                    SuperUsuario = Boolean.Parse(columnas[2])
+                }; return rol;
+            }
+            return null;
         }
     }
 }

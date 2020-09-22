@@ -1,29 +1,68 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dao;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Udabol_Tareas_Restful.Modelo;
+using Modelo;
 
-namespace Udabol_Tareas_Restful.Controllers
+namespace Controllers
 {
     [Route("[controller]")]
     [ApiController]
     public class RolController : ControllerBase
     {
-
-        public RolController(RolContext context)
+        public RolController()
         {
-            _context = context;
+            
         }
 
         // GET: Rol
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Rol>>> GetRoles()
+        public List<IObjetoTexto> GetRoles()
         {
-            return await _context.Roles.ToListAsync();
+            return ModeloFactory.Listar("Modelo.Rol");
+        }
+        // GET: Rol/5
+        [HttpGet("{id}")]
+        public Rol GetRol(int id)
+        {
+            return (Rol)ModeloFactory.Obtener(new KeyValuePair<String, String>("id", id.ToString()), "Modelo.Rol");
         }
 
+        // PUT: Rol/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutRol(int id, Rol rol)
+        {
+            if (id != rol.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RolExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+
+        /*
         // GET: Rol/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Rol>> GetRol(int id)
@@ -102,6 +141,6 @@ namespace Udabol_Tareas_Restful.Controllers
         private bool RolExists(int id)
         {
             return _context.Roles.Any(e => e.Id == id);
-        }
+        }*/
     }
 }

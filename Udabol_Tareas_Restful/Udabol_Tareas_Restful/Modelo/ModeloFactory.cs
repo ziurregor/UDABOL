@@ -43,14 +43,28 @@ namespace Modelo
             return true;
         }
 
+        public static Boolean Modificar(IObjetoTexto fuente,String identificador) {
+            Type tipo = fuente.GetType();
+            PropertyInfo propiedad = tipo.GetProperty("Id");
+            IObjetoTexto destino=Obtener(new KeyValuePair<string, string>(identificador, propiedad.GetValue(fuente).ToString()),tipo);
+            if (destino!=null) { 
+
+            }
+            return false;
+        }
+
+
+        
+
+
 
         // Update Usuario set nombre=Juana Perez,estado=Deshabilitado where id=2
 
 
-        public static Boolean Modificar(Dictionary<String,String> campos,KeyValuePair<String,String> condicion,List<ModeloFactory> listaAModificar,Type tipo) {
+        public static Boolean Modificar(Dictionary<String,String> campos,KeyValuePair<String,String> condicion,List<IObjetoTexto> listaAModificar,Type tipo) {
             PropertyInfo[] _propiedadesClase = tipo.GetProperties();
 
-            foreach (ModeloFactory objeto in listaAModificar) {
+            foreach (IObjetoTexto objeto in listaAModificar) {
                 Type tipoObjeto = objeto.GetType();
                 PropertyInfo _identificadorCondicion= tipoObjeto.GetProperty(condicion.Key);
                 String _valor = _identificadorCondicion.GetValue(objeto).ToString();
@@ -69,8 +83,7 @@ namespace Modelo
                             }
                         }
                     }
-                    IConexion _conexion = ConexionFactory.DarConexion(tipo);
-                    _conexion.EscribirTabla(listaAModificar);
+                    ConexionFactory.DarConexion(tipo).EscribirTabla(listaAModificar);
 
                     return true;
                 }
@@ -80,24 +93,12 @@ namespace Modelo
 
 
 
-        // select * from Usuario
 
-        public List<ModeloFactory> Listar() {
 
-            List<ModeloFactory> _lista = new List<ModeloFactory>();
-
-            if (_conexion != null)
-            {
-                _lista = _conexion.LeerTabla();
-            }
-            return _lista;
-
-        }
-
-        public static List<ModeloFactory> Listar(Type tipo)
+        public static List<IObjetoTexto> Listar(Type tipo)
         {
             IConexion _conexion= ConexionFactory.DarConexion(tipo);
-            List<ModeloFactory> _lista = new List<ModeloFactory>();
+            List<IObjetoTexto> _lista = new List<IObjetoTexto>();
 
             if (_conexion != null)
             {
@@ -107,7 +108,7 @@ namespace Modelo
 
         }
 
-        public static List<ModeloFactory> Listar(String tipo)
+        public static List<IObjetoTexto> Listar(String tipo)
         {
             return Listar(Type.GetType(tipo));
 
@@ -115,24 +116,19 @@ namespace Modelo
 
 
 
-        public ModeloFactory Obtener(KeyValuePair<String,String> condicion) {
-            return Obtener(condicion, this.GetType());
-        }
-
-        public static ModeloFactory Obtener(KeyValuePair<String, String> condicion,String tipoModelo)
+        public static IObjetoTexto Obtener(KeyValuePair<String, String> condicion,String tipoModelo)
         {
             return Obtener(condicion, Type.GetType(tipoModelo));
         }
 
 
-        public static ModeloFactory Obtener(KeyValuePair<String, String> condicion,Type tipoModelo)
+        public static IObjetoTexto Obtener(KeyValuePair<String, String> condicion,Type tipoModelo)
         {
 
-            List<ModeloFactory> lista = ((ModeloFactory)Activator.CreateInstance(tipoModelo) ).Listar();
+            List<IObjetoTexto> lista = Listar(tipoModelo);
             if (lista != null)
             {
-                Type tipo = tipoModelo;
-                foreach (ModeloFactory objeto in lista)
+                foreach (IObjetoTexto objeto in lista)
                 {
                     if (objeto != null)
                     {
@@ -151,12 +147,12 @@ namespace Modelo
         //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
         // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
         //ModeloBase.ObtenerCampoValor(rol,"nombre");
-        public static Object ObtenerCampoValor(ModeloFactory objeto,String campo) {
+        public static Object ObtenerCampoValor(IObjetoTexto objeto,String campo) {
             //ToTitleCase ---> PascalCase
             TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
-            MethodInfo metodo = objeto.GetType().GetMethod("Obtener"+textInfo.ToTitleCase(campo));
-            if (metodo != null) {
-                return metodo.Invoke(objeto, null);
+            PropertyInfo propiedad = objeto.GetType().GetProperty(textInfo.ToTitleCase(campo));
+            if (propiedad != null) {
+                return propiedad.GetValue(objeto);
             }
             return null;
         }
@@ -216,7 +212,7 @@ namespace Modelo
                 {
                     int nroLinea = listaAEliminar.IndexOf(objeto);
 
-                    _conexion.EliminarRegistro(nroLinea);
+                    ConexionFactory.DarConexion(tipoObjeto).EliminarRegistro(nroLinea);
 
                     return true;
                 }
@@ -236,10 +232,5 @@ namespace Modelo
         {
             return (IObjetoTexto)Activator.CreateInstance(Type.GetType(tipo));
         }
-
-
-        public abstract string guardarTexto();
-
-        public abstract ModeloFactory leerTexto(string texto);
     }
 }
