@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Dao;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Negocio;
 using Modelo;
+using Util;
 
 namespace Controllers
 {
@@ -14,75 +14,90 @@ namespace Controllers
     public class RolController : ControllerBase
     {
 
-        // GET: Rol
+        // GET: Todos los Roles
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Rol>>> GetRoles()
+        public Mensaje GetRoles()
         {
-            return Ok(ModeloFactory.Listar("Modelo.Rol"));
+            return Mensaje.INGRESA_LOGIN;
+        }
+
+        // GET: Rol
+        [HttpGet("{sesionId}")]
+        public Object GetRoles(String sesionId)
+        {
+            if (Sesion.VerificarSesion(sesionId,true) != null)
+            {
+                return ModeloFactory.Listar<Rol>();
+            }
+            return Mensaje.SESION_INCORRECTA;
 
         }
         // GET: Rol/5
-        [HttpGet("{id}")]
-        public Rol GetRol(int id)
+        [HttpGet("{id}/{sesionId}")]
+        public Object GetRol(int id, String sesionId)
         {
-            return (Rol)ModeloFactory.Obtener(new KeyValuePair<String, String>("id", id.ToString()), "Modelo.Rol");
+            if (Sesion.VerificarSesion(sesionId, true) != null)
+            {
+                return ModeloFactory.Obtener<Rol>(new KeyValuePair<String, String>("id", id.ToString()));
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
 
         // PUT: Rol/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRol(int id, Rol rol)
+        [HttpPut("{id}/{sesionId}")]
+        public Mensaje PutRol(int id, String sesionId, Rol rol)
         {
-            if (id != rol.Id)
+            if (Sesion.VerificarSesion(sesionId, true) != null)
             {
-                return BadRequest();
-            }
-
-            try
-            {
-                ModeloFactory.Modificar(rol, "Id");
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RolExists(id))
+                if (id != rol.Id)
                 {
-                    return NotFound();
+                    return Mensaje.DATOS_ID;
                 }
-                else
+
+
+                if (ModeloFactory.Modificar(rol, "Id"))
                 {
-                    throw;
+                    return Mensaje.MODIFICO_EXITO;
                 }
+
+                return Mensaje.NO_MODIFICAR;
             }
-
-            return NoContent();
-        }
-
-        private bool RolExists(int id)
-        {
-            IObjetoTexto rol = ModeloFactory.Obtener(new KeyValuePair<String, String>("Id",id.ToString()), "Modelo.Rol");
-            return rol!=null;
+            return Mensaje.SESION_INCORRECTA;
         }
 
 
         // POST: Rol
-        [HttpPost]
-        public async Task<ActionResult<Rol>> PostRol(Rol rol)
+        [HttpPost("{sesionId}")]
+        public Object PostRol(String sesionId, Rol rol)
         {
-            ModeloFactory.Crear(rol);
-            return CreatedAtAction(nameof(GetRol), new { id = rol.Id }, rol);
+            if (Sesion.VerificarSesion(sesionId,true) != null)
+            {
+                if (ModeloFactory.Crear(rol))
+                {
+                    return GetRol(rol.Id, sesionId);
+                }
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
 
         // DELETE: Rol/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Rol>> DeleteRol(int id)
+        [HttpDelete("{id}/{sesionId}")]
+        public Object DeleteRol(int id,String sesionId)
         {
-            Rol rol = (Rol)ModeloFactory.Obtener(new KeyValuePair<string, string>("Id", id.ToString()), Type.GetType("Modelo.Rol"));
-            if (rol == null)
+            if (Sesion.VerificarSesion(sesionId,true) != null)
             {
-                return NotFound();
-            }
+                Rol rol = ModeloFactory.Obtener<Rol>(new KeyValuePair<string, string>("Id", id.ToString()));
+                if (rol == null)
+                {
+                    return NotFound();
+                }
 
-            ModeloFactory.Eliminar(new KeyValuePair<string, string>("Id", id.ToString()), rol.GetType());
-            return rol;
+                if (ModeloFactory.Eliminar<Rol>(new KeyValuePair<string, string>("Id", id.ToString())))
+                {
+                    return rol;
+                }
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
     }
 }

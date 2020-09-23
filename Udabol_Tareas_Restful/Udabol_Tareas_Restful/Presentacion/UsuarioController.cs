@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Negocio;
 using Modelo;
+using Util;
 
 namespace Controllers
 {
@@ -11,76 +13,86 @@ namespace Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-
-        // GET: Usuario
+        // GET: Todos los Usuarios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
+        public Mensaje GetRoles()
         {
-            return Ok(ModeloFactory.Listar("Modelo.Usuario"));
-
+            return Mensaje.INGRESA_LOGIN;
+        }
+        // GET: Usuario
+        [HttpGet("{sesionId}")]
+        public Object GetUsuarios(String sesionId)
+        {
+            if (Sesion.VerificarSesion(sesionId,true) != null)
+            {
+                return ModeloFactory.Listar<Usuario>();
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
         // GET: Usuario/5
-        [HttpGet("{id}")]
-        public Usuario GetUsuario(int id)
+        [HttpGet("{id}/{sesionId}")]
+        public Object GetUsuario(int id,String sesionId)
         {
-            return (Usuario)ModeloFactory.Obtener(new KeyValuePair<String, String>("id", id.ToString()), "Modelo.Usuario");
+            if (Sesion.VerificarSesion(sesionId, true) != null)
+            {
+                return ModeloFactory.Obtener<Usuario>(new KeyValuePair<String, String>("id", id.ToString()));
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
 
         // PUT: Usuario/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
+        [HttpPut("{id}/{sesionId}")]
+        public Mensaje PutUsuario(int id,String sesionId, Usuario usuario)
         {
-            if (id != usuario.Id)
+            if (Sesion.VerificarSesion(sesionId, true) != null)
             {
-                return BadRequest();
-            }
-
-            try
-            {
-                ModeloFactory.Modificar(usuario, "Id");
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RolExists(id))
+                if (id != usuario.Id)
                 {
-                    return NotFound();
+                    return Mensaje.DATOS_ID;
                 }
-                else
+
+
+                if (ModeloFactory.Modificar(usuario, "Id"))
                 {
-                    throw;
+                    return Mensaje.MODIFICO_EXITO;
                 }
+
+                return Mensaje.NO_MODIFICAR;
             }
-
-            return NoContent();
+            return Mensaje.SESION_INCORRECTA;
         }
-
-        private bool RolExists(int id)
-        {
-            IObjetoTexto rol = ModeloFactory.Obtener(new KeyValuePair<String, String>("Id",id.ToString()), "Modelo.Usuario");
-            return rol!=null;
-        }
-
 
         // POST: Usuario
-        [HttpPost]
-        public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
+        [HttpPost("{sesionId}")]
+        public Object PostUsuario(String sesionId,Usuario usuario)
         {
-            ModeloFactory.Crear(usuario);
-            return CreatedAtAction(nameof(GetUsuario), new { id = usuario.Id }, usuario);
+            if (Sesion.VerificarSesion(sesionId, true) != null)
+            {
+                if (ModeloFactory.Crear(usuario))
+                {
+                    return GetUsuario(usuario.Id, sesionId);
+                }
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
 
         // DELETE: Usuario/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Usuario>> DeleteUsuario(int id)
+        [HttpDelete("{id}/{sesionId}")]
+        public Object DeleteUsuario(int id,String sesionId)
         {
-            Usuario usuario = (Usuario)ModeloFactory.Obtener(new KeyValuePair<string, string>("Id", id.ToString()), Type.GetType("Modelo.Usuario"));
-            if (usuario == null)
+            if (Sesion.VerificarSesion(sesionId, true) != null)
             {
-                return NotFound();
+                Usuario usuario = ModeloFactory.Obtener<Usuario>(new KeyValuePair<string, string>("Id", id.ToString()));
+                if (usuario == null)
+                {
+                    if (ModeloFactory.Eliminar<Usuario>(new KeyValuePair<string, string>("Id", id.ToString())))
+                    {
+                        return usuario;
+                    }
+                }
             }
-
-            ModeloFactory.Eliminar(new KeyValuePair<string, string>("Id", id.ToString()), usuario.GetType());
-            return usuario;
+            return Mensaje.SESION_INCORRECTA;
+            
         }
     }
 }

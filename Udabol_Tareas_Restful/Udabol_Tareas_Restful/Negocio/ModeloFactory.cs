@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
 using Dao;
+using Modelo;
 
-namespace Modelo
+namespace Negocio
 {
     public class ModeloFactory
     {
@@ -68,38 +67,74 @@ namespace Modelo
             return true;
         }
 
-        public static Boolean Modificar(IObjetoTexto fuente,String identificador) {
-            Type tipo = fuente.GetType();
-            PropertyInfo propiedad = tipo.GetProperty(identificador);
-            PropertyInfo[] propiedades = tipo.GetProperties();
-
-            KeyValuePair<String, String> condicion = new KeyValuePair<String, String>(identificador, propiedad.GetValue(fuente).ToString());
-            Dictionary<String, String> campos = new Dictionary<String, String>();
-            foreach (PropertyInfo propiedadx in propiedades)
+        public static Boolean Modificar<T>(T fuente, String identificador) {
+            fuente = ValidarNulos<T>(fuente, identificador);
+            if (fuente != null)
             {
-                if (propiedadx.Name != identificador) {
-                    campos.Add(propiedadx.Name,propiedadx.GetValue(fuente).ToString());
+                Type tipo = typeof(T);
+                PropertyInfo propiedad = tipo.GetProperty(identificador);
+                PropertyInfo[] propiedades = tipo.GetProperties();
+                KeyValuePair<String, String> condicion = new KeyValuePair<String, String>(identificador, propiedad.GetValue(fuente).ToString());
+                Dictionary<String, String> campos = new Dictionary<String, String>();
+                foreach (PropertyInfo propiedadx in propiedades)
+                {
+                    if (propiedadx.Name != identificador)
+                    {
+                        campos.Add(propiedadx.Name, propiedadx.GetValue(fuente).ToString());
+                    }
                 }
-            }
 
-            return Modificar(campos,condicion,tipo);
+                return Modificar(campos, condicion, tipo);
+            }
+            return false;
         }
 
 
-        
+
+        public static T ValidarNulos<T>(T destino,string identificador)
+        {
+            if (destino != null)
+            {
+                PropertyInfo propiedadId = typeof(T).GetProperty(identificador);
+                if (propiedadId != null)
+                {
+                    T origen = Obtener<T>(new KeyValuePair<string, string>(identificador, propiedadId.GetValue(destino).ToString()));
+                    if (origen != null)
+                    {
+                        PropertyInfo[] propiedades = origen.GetType().GetProperties();
+                        foreach (PropertyInfo propiedad in propiedades)
+                        {
+                            if (propiedad.GetValue(destino)==null || (propiedad.PropertyType.Name.Equals("Int32")&& propiedad.GetValue(destino).Equals(0)))
+                            {
+                                propiedad.SetValue(destino, propiedad.GetValue(origen));
+                            }
+                        }
+                        return destino;
+                    }
+                }
+            }
+            return default;
+        }
 
 
 
         // Update Usuario set nombre=Juana Perez,estado=Deshabilitado where id=2
 
+        public static Boolean Modificar<T>(Dictionary<String, String> campos, KeyValuePair<String, String> condicion)
+        {
+            return Modificar(campos, condicion, typeof(T));
+        }
 
-        public static Boolean Modificar(Dictionary<String,String> campos,KeyValuePair<String,String> condicion,Type tipo) {
+
+        public static Boolean Modificar(Dictionary<String, String> campos, KeyValuePair<String, String> condicion, Type tipo)
+        {
             PropertyInfo[] _propiedadesClase = tipo.GetProperties();
             List<IObjetoTexto> listaAModificar = Listar(tipo);
 
-            foreach (IObjetoTexto objeto in listaAModificar) {
+            foreach (IObjetoTexto objeto in listaAModificar)
+            {
                 Type tipoObjeto = objeto.GetType();
-                PropertyInfo _identificadorCondicion= tipoObjeto.GetProperty(condicion.Key);
+                PropertyInfo _identificadorCondicion = tipoObjeto.GetProperty(condicion.Key);
                 String _valor = _identificadorCondicion.GetValue(objeto).ToString();
                 //id=2
                 //if(objeto.id==2)
@@ -108,7 +143,7 @@ namespace Modelo
                     //Nombre=Juana......Estado=Deshabilitado
                     foreach (PropertyInfo propiedad in _propiedadesClase)
                     {
-                        foreach (KeyValuePair<String,String> campo in campos)
+                        foreach (KeyValuePair<String, String> campo in campos)
                         {
                             if (propiedad.Name.Equals(campo.Key))
                             {
@@ -124,9 +159,7 @@ namespace Modelo
             return false;
         }
 
-
-
-
+        
 
         public static List<IObjetoTexto> Listar(Type tipo)
         {
@@ -141,12 +174,33 @@ namespace Modelo
 
         }
 
+        public static List<T> Listar<T>()
+        {
+            IConexion _conexion = ConexionFactory.DarConexion(typeof(T));
+            List<T> _lista = new List<T>();
+
+            if (_conexion != null)
+            {
+                _lista = _conexion.LeerTabla<T>();
+            }
+            return _lista;
+
+        }
+
+
+
+
         public static List<IObjetoTexto> Listar(String tipo)
         {
             return Listar(Type.GetType(tipo));
 
         }
 
+
+        public static T Obtener<T>(KeyValuePair<String, String> condicion)
+        {
+            return (T)Obtener(condicion, typeof(T));
+        }
 
 
         public static IObjetoTexto Obtener(KeyValuePair<String, String> condicion,String tipoModelo)
@@ -178,6 +232,11 @@ namespace Modelo
         }
 
         //delete from Usuario where id=2
+
+        internal static Boolean Eliminar<T>(KeyValuePair<string, string> condicion)
+        {
+            return Eliminar(condicion, typeof(T));
+        }
 
         public static Boolean Eliminar(KeyValuePair<String, String> condicion, Type tipo)
         {
@@ -213,8 +272,15 @@ namespace Modelo
 
         public static IObjetoTexto darInstancia(String tipo)
         {
-            return (IObjetoTexto)Activator.CreateInstance(Type.GetType(tipo));
+            return darInstancia(Type.GetType(tipo));
         }
+
+
+        public static T darInstancia<T>()
+        {
+            return (T)Activator.CreateInstance(typeof(T));
+        }
+
 
         //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
         // Si el objeto es Rol... y le queremos obtener el valor del campo nombre

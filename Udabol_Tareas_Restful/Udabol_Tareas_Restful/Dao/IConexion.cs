@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Modelo;
 
+
 namespace Dao
 {
     interface IConexion
@@ -10,6 +11,8 @@ namespace Dao
         public Boolean Conectar(String cadenaDeConexion, Type tipo);
 
         public List<IObjetoTexto> LeerTabla();
+
+        public List<T> LeerTabla<T>();
 
         public Boolean EscribirTabla(List<IObjetoTexto> lista);
 

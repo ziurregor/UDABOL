@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Dao;
 using Modelo;
+using Negocio;
 
 namespace Dao
 {
@@ -112,8 +112,36 @@ namespace Dao
                 String[] lineas = _contenido.Split("\n");
                 for (int i=0;i<lineas.Length;i++) {
                     lineas[i] = lineas[i].Trim();
-                    IObjetoTexto _objeto = ModeloFactory.darInstancia(_tipo);
-                    lista.Add(_objeto.leerTexto(lineas[i]));
+                    if (!lineas[i].Equals(""))
+                    {
+                        IObjetoTexto _objeto = ModeloFactory.darInstancia(_tipo);
+                        lista.Add(_objeto.leerTexto(lineas[i]));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
+            }
+
+
+            return lista;
+        }
+
+        public List<T> LeerTabla<T>()
+        {
+            List<T> lista = new List<T>();
+            try
+            {
+                String[] lineas = _contenido.Split("\n");
+                for (int i = 0; i < lineas.Length; i++)
+                {
+                    lineas[i] = lineas[i].Trim();
+                    if (!lineas[i].Equals(""))
+                    {
+                        IObjetoTexto _objeto = ModeloFactory.darInstancia(typeof(T));
+                        lista.Add((T)_objeto.leerTexto(lineas[i]));
+                    }
                 }
             }
             catch (Exception ex)

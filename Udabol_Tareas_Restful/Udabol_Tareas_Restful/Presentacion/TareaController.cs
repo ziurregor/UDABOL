@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Negocio;
 using Modelo;
+using Util;
 
 namespace Controllers
 {
@@ -12,75 +14,78 @@ namespace Controllers
     public class TareaController : ControllerBase
     {
 
-        // GET: Tarea
+        // GET: Todas las Tareas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tarea>>> GetTareas()
+        public Mensaje GetTareas()
         {
-            return Ok(ModeloFactory.Listar("Modelo.Tarea"));
-
+            return Mensaje.INGRESA_LOGIN;
         }
+
+        // GET: Todas las Tareas
+        [HttpGet("{sesionId}")]
+        public Object GetTareas(String sesionId)
+        {
+            if (Sesion.VerificarSesion(sesionId) !=null)
+            {
+                return ManejadorTareas.Listar();
+            }
+            return Mensaje.SESION_INCORRECTA;
+        }
+
         // GET: Tarea/5
-        [HttpGet("{id}")]
-        public Tarea GetTarea(int id)
+        [HttpGet("{id}/{sesionId}")]
+        public Object GetTarea(int id,String sesionId)
         {
-            return (Usuario)ModeloFactory.Obtener(new KeyValuePair<String, String>("id", id.ToString()), "Modelo.Usuario");
+            if (Sesion.VerificarSesion(sesionId) != null)
+            {
+                return ManejadorTareas.Obtener(id);
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
 
-        // PUT: Usuario/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
+        // PUT: Tarea/5
+        [HttpPut("{id}/{sesionId}")]
+        public Mensaje PutTarea(int id,String sesionId, Tarea tarea)
         {
-            if (id != usuario.Id)
+            if (Sesion.VerificarSesion(sesionId) != null)
             {
-                return BadRequest();
-            }
-
-            try
-            {
-                ModeloFactory.Modificar(usuario, "Id");
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RolExists(id))
+                if (id != tarea.Id)
                 {
-                    return NotFound();
+                    return Mensaje.DATOS_ID;
                 }
-                else
+
+
+                if (ManejadorTareas.Modificar(tarea,sesionId))
                 {
-                    throw;
+                    return Mensaje.MODIFICO_EXITO;
                 }
+
+                return Mensaje.NO_MODIFICAR;
             }
-
-            return NoContent();
+            return Mensaje.SESION_INCORRECTA;
         }
 
-        private bool RolExists(int id)
+        // POST: Tarea
+        [HttpPost("{sesionId}")]
+        public Object PostTarea(String sesionId,Tarea tarea)
         {
-            IObjetoTexto rol = ModeloFactory.Obtener(new KeyValuePair<String, String>("Id",id.ToString()), "Modelo.Usuario");
-            return rol!=null;
-        }
-
-
-        // POST: Usuario
-        [HttpPost]
-        public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
-        {
-            ModeloFactory.Crear(usuario);
-            return CreatedAtAction(nameof(GetUsuario), new { id = usuario.Id }, usuario);
-        }
-
-        // DELETE: Usuario/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Usuario>> DeleteUsuario(int id)
-        {
-            Usuario usuario = (Usuario)ModeloFactory.Obtener(new KeyValuePair<string, string>("Id", id.ToString()), Type.GetType("Modelo.Usuario"));
-            if (usuario == null)
+            if (ManejadorTareas.Crear(tarea, sesionId))
             {
-                return NotFound();
+                return GetTarea(tarea.Id, sesionId);
             }
+            return Mensaje.SESION_INCORRECTA;
+        }
 
-            ModeloFactory.Eliminar(new KeyValuePair<string, string>("Id", id.ToString()), usuario.GetType());
-            return usuario;
+        // DELETE: Tarea/5
+        [HttpDelete("{id}/sesionId")]
+        public Object DeleteTarea(int id,string sesionId)
+        {
+            Tarea tarea = ManejadorTareas.Eliminar(id,sesionId);
+            if (tarea != null)
+            {
+                return tarea; 
+            }
+            return Mensaje.SESION_INCORRECTA;
         }
     }
 }

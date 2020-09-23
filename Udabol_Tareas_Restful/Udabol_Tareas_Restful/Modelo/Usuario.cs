@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Util;
+using Negocio;
 
 namespace Modelo
 {
@@ -15,7 +16,7 @@ namespace Modelo
         public String Contrasena { get { return _contrasena; } set {_contrasena=Utilidades.encriptarContrasena(Nombre,value);} }
 
         private Rol _rol;
-        public Int32 Rol { get { return _rol.Id; } set { _rol = (Rol)ModeloFactory.Obtener(new KeyValuePair<string, string>("Id", value.ToString()), "Modelo.Rol"); } }
+        public Int32 Rol { get { return _rol.Id; } set { _rol = ModeloFactory.Obtener<Rol>(new KeyValuePair<string, string>("Id", value.ToString())); } }
 
         public Usuario() {
             _rol = new Rol();
@@ -23,6 +24,10 @@ namespace Modelo
 
 
         public String Estado { get; set; }
+
+        public Rol GetRol() {
+            return _rol;
+        }
 
         public string guardarTexto()
         {
@@ -38,7 +43,7 @@ namespace Modelo
                 {
                     Id = Int32.Parse(columnas[0]),
                     Nombre = columnas[1],
-                    Contrasena = columnas[2],
+                    _contrasena = columnas[2],
                     Rol = Int32.Parse( columnas[3]),
                     Estado = columnas[4]
                 }; return usuario;

@@ -8,9 +8,16 @@ namespace Util
     {
         public static string encriptarContrasena(string llave,string contrasena)
         {
-            String _cadenaAConvertir = MD5(llave) + MD5(contrasena);
-            byte[] _cadenaConvertidaBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(_cadenaAConvertir);
-            return System.Convert.ToBase64String(_cadenaConvertidaBytes);
+            return ABase64(MD5(llave) + MD5(contrasena));
+        }
+
+        public static string ABase64(String texto) {
+            return System.Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(texto));
+        }
+
+        public static string DeBase64(String texto)
+        {
+            return System.Text.ASCIIEncoding.ASCII.GetString(System.Convert.FromBase64String(texto));
         }
 
         private static string MD5(this string s)
