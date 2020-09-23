@@ -77,7 +77,7 @@ namespace Controllers
         }
 
         // DELETE: Tarea/5
-        [HttpDelete("{id}/sesionId")]
+        [HttpDelete("{id}/{sesionId}")]
         public Object DeleteTarea(int id,string sesionId)
         {
             Tarea tarea = ManejadorTareas.Eliminar(id,sesionId);

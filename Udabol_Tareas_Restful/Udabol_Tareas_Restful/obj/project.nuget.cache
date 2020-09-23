@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZRyzwz46VwP3ofHRyPw3xo0fmCDsx7JUQ7OYiJw7ibtcCtO5l1sy3wVRUopNcACJ5y6lL0q5bnH7qrbwm3bP8w==",
+  "dgSpecHash": "gIvxdMohNKEottsQxPOeo40BEbF5N07Cu3j2c0cPTG4AsgSBG9uqi1KseOEZmDkypZJXcUunCj98RplBcPfh2A==",
   "success": true,
   "projectFilePath": "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful.csproj",
   "expectedPackageFiles": [
@@ -78,6 +78,7 @@
     "C:\\Users\\AlvaroJusto\\.nuget\\packages\\system.composition.runtime\\1.0.31\\system.composition.runtime.1.0.31.nupkg.sha512",
     "C:\\Users\\AlvaroJusto\\.nuget\\packages\\system.composition.typedparts\\1.0.31\\system.composition.typedparts.1.0.31.nupkg.sha512",
     "C:\\Users\\AlvaroJusto\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
+    "C:\\Users\\AlvaroJusto\\.nuget\\packages\\system.data.sqlite.core\\1.0.113.1\\system.data.sqlite.core.1.0.113.1.nupkg.sha512",
     "C:\\Users\\AlvaroJusto\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\AlvaroJusto\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "C:\\Users\\AlvaroJusto\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",

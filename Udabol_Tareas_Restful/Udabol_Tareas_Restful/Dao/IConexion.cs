@@ -6,9 +6,9 @@ using Modelo;
 
 namespace Dao
 {
-    interface IConexion
+    public interface IConexion
     {
-        public Boolean Conectar(String cadenaDeConexion, Type tipo);
+        public Boolean Conectar(Type tipo);
 
         public List<IObjetoTexto> LeerTabla();
 
@@ -17,7 +17,7 @@ namespace Dao
         public Boolean EscribirTabla(List<IObjetoTexto> lista);
 
 
-        public Boolean EliminarRegistro(Int32 numeroLinea);
+        public Boolean EliminarRegistro(KeyValuePair<String,String> condicion);
 
 
         public Boolean Guardar();

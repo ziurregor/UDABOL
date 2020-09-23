@@ -147,7 +147,16 @@ namespace Negocio
                         {
                             if (propiedad.Name.Equals(campo.Key))
                             {
-                                propiedad.SetValue(objeto, campo.Value);
+                                switch (propiedad.PropertyType.Name)
+                                {
+                                    case "Int32":
+                                        propiedad.SetValue(objeto, Int32.Parse(campo.Value));
+                                        break;
+                                    default:
+                                        propiedad.SetValue(objeto, campo.Value);
+                                        break;
+                                }
+                                
                             }
                         }
                     }
@@ -240,24 +249,11 @@ namespace Negocio
 
         public static Boolean Eliminar(KeyValuePair<String, String> condicion, Type tipo)
         {
-            List<IObjetoTexto> listaAEliminar = Listar(tipo);
-            PropertyInfo[] _propiedadesClase = tipo.GetProperties();
-
-            foreach (IObjetoTexto objeto in listaAEliminar)
+            IConexion conexion = ConexionFactory.DarConexion(tipo);
+            if (conexion.EliminarRegistro(condicion))
             {
-                Type tipoObjeto = objeto.GetType();
-                PropertyInfo _identificadorCondicion = tipoObjeto.GetProperty(condicion.Key);
-                String _valor = _identificadorCondicion.GetValue(objeto).ToString();
-                //id=2
-                //if(objeto.id==2)
-                if (_valor.Equals(condicion.Value))
-                {
-                    int nroLinea = listaAEliminar.IndexOf(objeto);
-
-                    ConexionFactory.DarConexion(tipoObjeto).EliminarRegistro(nroLinea);
-
-                    return true;
-                }
+                conexion.Guardar();
+                return true;
             }
             return false;
         }

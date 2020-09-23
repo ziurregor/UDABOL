@@ -18,7 +18,7 @@ namespace Negocio
 
         private static string EncriptaSesion(Usuario usuario)
         {
-            return Utilidades.ABase64(usuario.Contrasena + "," + DateTime.Now.AddMinutes(10).ToFileTime().ToString());
+            return Utilidades.ABase64(usuario.Contrasena + "," + DateTime.Now.AddMinutes(Configuracion.tiempoSesion).ToFileTime().ToString());
         }
 
         public static Usuario VerificarSesion(String sesionId,Boolean superUsuario)

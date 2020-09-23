@@ -1,87 +1,99 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Modelo;
 using Negocio;
+using Util;
 
 namespace Dao
 {
-    public class ConexionTexto : IConexion
+    public class ConexionSqlite: IConexion
     {
-        private String _archivo;
-        private String _contenido;
+        private static SQLiteConnection conexion=null ;
+
         private Type _tipo;
+
+        public ConexionSqlite() {
+            if (conexion == null) {
+
+                String directorioActual = Directory.GetCurrentDirectory();
+                String archivo = "DataSource="+directorioActual + "\\" + Configuracion.baseDatosNombre + ".db";
+                conexion = new SQLiteConnection(archivo);
+            }
+        }
 
         public bool Conectar(Type tipo)
         {
+            _tipo = tipo;
             try
             {
-                _tipo = tipo;
-                _archivo = tipo.Name+".txt";
-                if (File.Exists(_archivo))
+                PropertyInfo[] propiedades = tipo.GetProperties();
+                if (propiedades.Length > 0)
                 {
-                    _contenido = File.ReadAllText(_archivo);
+                    List<String> campos = new List<String>();
+                    Boolean primary = false;
+                    foreach (PropertyInfo propiedad in propiedades)
+                    {
+                        String linea = propiedad.Name;
+                        switch (propiedad.PropertyType.Name)
+                        {
+                            case "Int32":
+                                linea += " Integer not null";
+                                break;
+                            default:
+                                linea += " Text not null";
+                                break;
+                        }
+                        if (!primary)
+                        {
+                            linea += " primary key";
+
+                            //TODO auto_increment
+
+                            primary = true;
+                        }
+                        campos.Add(linea);
+                    }
+                    ExecuteNonQuery("create table if not exists " + tipo.Name + "(" + campos.Join(",") + ");");
                 }
-                else _contenido = "";
-                return true;
+
+            }catch (Exception ex)
+            {
+                System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
             }
-            catch (Exception ex) {
-                System.Console.WriteLine("Ha ocurrido un Error: "+ex.Message);
-            }
+            
             return false;
         }
 
-        /* ROL
-         * 1    Usuario Comun
-         * 2    Super Usuario
-         * 
-         * Usuario
-         * 
-         * 1    Fulanito de tal 1
-         * 2    SuperUsuario    2
-         * 
-         * 
-         */
+        private void ExecuteNonQuery(String query) {
+            conexion.Open();
+            SQLiteCommand cmd = conexion.CreateCommand();
+
+            cmd.CommandText = query;
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
 
         public Boolean EliminarRegistro(KeyValuePair<String,String> condicion)
         {
-
-            List<IObjetoTexto> listaAEliminar = LeerTabla();
-            PropertyInfo[] _propiedadesClase = _tipo.GetProperties();
-
-            foreach (IObjetoTexto objeto in listaAEliminar)
+            if (condicion.Key != null && condicion.Value != null)
             {
-                Type tipoObjeto = objeto.GetType();
-                PropertyInfo _identificadorCondicion = tipoObjeto.GetProperty(condicion.Key);
-                String _valor = _identificadorCondicion.GetValue(objeto).ToString();
-                if (_valor.Equals(condicion.Value))
-                {
-                    int nroLinea = listaAEliminar.IndexOf(objeto);
-
-                    String[] lineas = _contenido.Split("\n");
-                    _contenido = "";
-
-                    for (int i = 0; i < lineas.Length; i++)
-                    {
-                        if (i != nroLinea && lineas[i] != null && !lineas[i].Trim().Equals(""))
-                        {
-                            _contenido += lineas[i] + "\n";
-                        }
-                    }
-
-                    return true;
-                }
+                ExecuteNonQuery("delete from " + _tipo.Name + " where " + condicion.Key+ "=\""+condicion.Value+"\"");
             }
-
+            
             return true;
         }
 
         public bool EscribirTabla( List<IObjetoTexto> lista)
         {
-            try
+            /*try
             {
                 if (lista != null )
                 {
@@ -99,13 +111,13 @@ namespace Dao
             }
             catch (Exception ex) {
                 System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }
+            }*/
             return false;
         }
 
         public bool Guardar()
         {
-            try
+            /*try
             {
                 File.WriteAllText(_archivo, _contenido, Encoding.UTF8);
                 return true;
@@ -113,19 +125,19 @@ namespace Dao
             catch (Exception ex)
             {
                 System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }
+            }*/
             return false;
         }
 
         public List<IObjetoTexto> LeerTabla()
         {
             List<IObjetoTexto> lista = new List<IObjetoTexto>();
-            try
+           /*try
             {
                 String[] lineas = _contenido.Split("\n");
                 for (int i=0;i<lineas.Length;i++) {
                     lineas[i] = lineas[i].Trim();
-                    if (!lineas[i].Trim().Equals(""))
+                    if (!lineas[i].Equals(""))
                     {
                         IObjetoTexto _objeto = ModeloFactory.darInstancia(_tipo);
                         lista.Add(_objeto.leerTexto(lineas[i]));
@@ -135,7 +147,7 @@ namespace Dao
             catch (Exception ex)
             {
                 System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }
+            }*/
 
 
             return lista;
@@ -144,7 +156,7 @@ namespace Dao
         public List<T> LeerTabla<T>()
         {
             List<T> lista = new List<T>();
-            try
+            /*try
             {
                 String[] lineas = _contenido.Split("\n");
                 for (int i = 0; i < lineas.Length; i++)
@@ -160,7 +172,7 @@ namespace Dao
             catch (Exception ex)
             {
                 System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }
+            }*/
             return lista;
         }
     }
