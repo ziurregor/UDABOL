@@ -89,7 +89,7 @@ namespace Controllers
                 Rol rol = ModeloFactory.Obtener<Rol>(new KeyValuePair<string, string>("Id", id.ToString()));
                 if (rol == null)
                 {
-                    return NotFound();
+                    return Mensaje.DATOS_ID;
                 }
 
                 if (ModeloFactory.Eliminar<Rol>(new KeyValuePair<string, string>("Id", id.ToString())))

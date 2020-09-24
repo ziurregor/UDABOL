@@ -100,7 +100,7 @@ namespace Dao
         public bool Guardar()
         {
             // TODO --->>Sqlite doesnt need this but may be we could implement a commit and rollback
-            return false;
+            return true;
         }
 
         public List<IObjetoTexto> LeerTabla()

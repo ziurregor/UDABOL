@@ -12,10 +12,10 @@ namespace Modelo
         public Int32  Id { get; set; }
         public String Nombre { get; set; }
 
-        public String _contrasena;
+        public String _contrasena;//variable oculta
         public String Contrasena { get { return _contrasena; } set {_contrasena=Utilidades.encriptarContrasena(Nombre,value);} }
 
-        private Rol _rol;
+        private Rol _rol;//variable oculta de Tipo Rol
         public Int32 Rol { get { return _rol.Id; } set { _rol = ModeloFactory.Obtener<Rol>(new KeyValuePair<string, string>("Id", value.ToString())); } }
 
         public Usuario() {

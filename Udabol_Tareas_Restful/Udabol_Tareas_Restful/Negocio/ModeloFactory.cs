@@ -67,6 +67,11 @@ namespace Negocio
             return true;
         }
 
+        //Rol (Id Nombre  SuperUsuario)(1 UsuarioComun false)
+        // Modficar (id,SuperUsuario)(1 true)
+        // Usuario (Id Nombre Contrasena Rol Estado) (1 fulanito xxxxxx 1 Habilitado)
+        // Modificar (id,Estado)(1 Deshabilitado)----->(id,Nombre Contrasena Rol,Estado)(1  fulanito xxxxxx 1 Deshabilitado)
+
         public static Boolean Modificar<T>(T fuente, String identificador) {
             fuente = ValidarNulos<T>(fuente, identificador);
             if (fuente != null)

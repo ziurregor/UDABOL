@@ -69,9 +69,12 @@ namespace Controllers
         [HttpPost("{sesionId}")]
         public Object PostTarea(String sesionId,Tarea tarea)
         {
-            if (ManejadorTareas.Crear(tarea, sesionId))
+            if (Sesion.VerificarSesion(sesionId,true) != null)
             {
-                return GetTarea(tarea.Id, sesionId);
+                if (ManejadorTareas.Crear(tarea, sesionId))
+                {
+                    return GetTarea(tarea.Id, sesionId);
+                }
             }
             return Mensaje.SESION_INCORRECTA;
         }
@@ -80,10 +83,13 @@ namespace Controllers
         [HttpDelete("{id}/{sesionId}")]
         public Object DeleteTarea(int id,string sesionId)
         {
-            Tarea tarea = ManejadorTareas.Eliminar(id,sesionId);
-            if (tarea != null)
+            if (Sesion.VerificarSesion(sesionId, true) != null)
             {
-                return tarea; 
+                Tarea tarea = ManejadorTareas.Eliminar(id, sesionId);
+                if (tarea != null)
+                {
+                    return tarea;
+                }
             }
             return Mensaje.SESION_INCORRECTA;
         }

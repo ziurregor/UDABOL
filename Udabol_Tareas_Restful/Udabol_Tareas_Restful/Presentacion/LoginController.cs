@@ -25,6 +25,7 @@ namespace Udabol_Tareas_Restful.Presentacion
         [HttpGet("{usuario}/{contrasena}")]
         public Mensaje GetLogin(String usuario,String contrasena)
         {
+            //Nullable 
             KeyValuePair<Usuario,String>? usuarioLlave= Login.Autenticar(usuario, contrasena);
             if (usuarioLlave != null && usuarioLlave.HasValue) {
                 return new Mensaje() {
