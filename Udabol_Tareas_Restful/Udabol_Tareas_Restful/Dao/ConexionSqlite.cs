@@ -93,86 +93,66 @@ namespace Dao
 
         public bool EscribirTabla( List<IObjetoTexto> lista)
         {
-            /*try
-            {
-                if (lista != null )
-                {
-                    String contenido = "";
-                    foreach (IObjetoTexto _objeto in lista) {
-                        if (_objeto != null)
-                        {
-                            contenido += _objeto.guardarTexto() + "\n";
-                        }
-                    }
-                    File.WriteAllText(_archivo, contenido);
-                    _contenido = contenido;
-                    return true;
-                }
-            }
-            catch (Exception ex) {
-                System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }*/
-            return false;
+            // TODO --->>Sqlite doesnt need this but may be we could implement a commit and rollback
+            return true;
         }
 
         public bool Guardar()
         {
-            /*try
-            {
-                File.WriteAllText(_archivo, _contenido, Encoding.UTF8);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }*/
+            // TODO --->>Sqlite doesnt need this but may be we could implement a commit and rollback
             return false;
         }
 
         public List<IObjetoTexto> LeerTabla()
         {
             List<IObjetoTexto> lista = new List<IObjetoTexto>();
-           /*try
+            String query = "Select * from "+ _tipo.Name;
+            conexion.Open();
+            SQLiteCommand cmd = new SQLiteCommand(query);
+            SQLiteDataReader lector = cmd.ExecuteReader();
+            PropertyInfo[] propiedades = _tipo.GetProperties();
+            while (lector.Read())
             {
-                String[] lineas = _contenido.Split("\n");
-                for (int i=0;i<lineas.Length;i++) {
-                    lineas[i] = lineas[i].Trim();
-                    if (!lineas[i].Equals(""))
+                if (lector.HasRows && lector.FieldCount > 0) {
+                    IObjetoTexto objeto= ModeloFactory.darInstancia(_tipo);
+                    foreach (PropertyInfo propiedad in propiedades)
                     {
-                        IObjetoTexto _objeto = ModeloFactory.darInstancia(_tipo);
-                        lista.Add(_objeto.leerTexto(lineas[i]));
+                        propiedad.SetValue(objeto, lector[propiedad.Name]);
+
                     }
+                    lista.Add(objeto);
+
                 }
             }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }*/
-
-
+            conexion.Close();
             return lista;
         }
 
         public List<T> LeerTabla<T>()
         {
             List<T> lista = new List<T>();
-            /*try
+            String query = "Select * from " + typeof(T).Name;
+            conexion.Open();
+            SQLiteCommand cmd = new SQLiteCommand(query);
+            SQLiteDataReader lector = cmd.ExecuteReader();
+            PropertyInfo[] propiedades = _tipo.GetProperties();
+            while (lector.Read())
             {
-                String[] lineas = _contenido.Split("\n");
-                for (int i = 0; i < lineas.Length; i++)
+
+                if (lector.HasRows && lector.FieldCount > 0)
                 {
-                    lineas[i] = lineas[i].Trim();
-                    if (!lineas[i].Equals(""))
+                    T objeto = ModeloFactory.darInstancia<T>();
+                    foreach (PropertyInfo propiedad in propiedades)
                     {
-                        IObjetoTexto _objeto = ModeloFactory.darInstancia(typeof(T));
-                        lista.Add((T)_objeto.leerTexto(lineas[i]));
+                        propiedad.SetValue(objeto, lector[propiedad.Name]);
+
                     }
+                    lista.Add(objeto);
+
                 }
+
             }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Ha ocurrido un Error: " + ex.Message);
-            }*/
+            conexion.Close();
             return lista;
         }
     }
