@@ -10,17 +10,18 @@ namespace Dao
     {
         public Boolean Conectar(Type tipo);
 
-        public List<IObjetoTexto> LeerTabla();
+        public List<IModeloBase> LeerTabla();
 
         public List<T> LeerTabla<T>();
 
-        public Boolean EscribirTabla(List<IObjetoTexto> lista);
+        public Boolean EscribirTabla(List<IModeloBase> lista);
 
+        public Boolean Modificar(Dictionary<String, String> campos, KeyValuePair<String, String> condicion);
 
         public Boolean EliminarRegistro(KeyValuePair<String,String> condicion);
 
-
         public Boolean Guardar();
 
+        bool Crear(IModeloBase fuente);
     }
 }

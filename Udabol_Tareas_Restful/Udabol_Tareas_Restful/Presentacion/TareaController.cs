@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Negocio;
 using Modelo;
 using Util;
+using System.Text.Json;
 
 namespace Controllers
 {
@@ -45,17 +46,17 @@ namespace Controllers
 
         // PUT: Tarea/5
         [HttpPut("{id}/{sesionId}")]
-        public Mensaje PutTarea(int id,String sesionId, Tarea tarea)
+        public Mensaje PutTarea(int id,String sesionId, JsonElement objeto)
         {
             if (Sesion.VerificarSesion(sesionId) != null)
             {
-                if (id != tarea.Id)
+                if (objeto.TryGetProperty("id", out JsonElement jsonId) && !jsonId.ToString().Equals(id.ToString()))
                 {
                     return Mensaje.DATOS_ID;
                 }
 
 
-                if (ManejadorTareas.Modificar(tarea,sesionId))
+                if (ManejadorTareas.Modificar(objeto,sesionId))
                 {
                     return Mensaje.MODIFICO_EXITO;
                 }
@@ -67,29 +68,23 @@ namespace Controllers
 
         // POST: Tarea
         [HttpPost("{sesionId}")]
-        public Object PostTarea(String sesionId,Tarea tarea)
+        public Object PostTarea(String sesionId, Tarea tarea)
         {
-            if (Sesion.VerificarSesion(sesionId,true) != null)
+            if (ManejadorTareas.Crear(tarea, sesionId))
             {
-                if (ManejadorTareas.Crear(tarea, sesionId))
-                {
-                    return GetTarea(tarea.Id, sesionId);
-                }
+                return GetTarea(tarea.Id, sesionId);
             }
             return Mensaje.SESION_INCORRECTA;
         }
 
         // DELETE: Tarea/5
         [HttpDelete("{id}/{sesionId}")]
-        public Object DeleteTarea(int id,string sesionId)
+        public Object DeleteTarea(int id, string sesionId)
         {
-            if (Sesion.VerificarSesion(sesionId, true) != null)
+            Tarea tarea = ManejadorTareas.Eliminar(id, sesionId);
+            if (tarea != null)
             {
-                Tarea tarea = ManejadorTareas.Eliminar(id, sesionId);
-                if (tarea != null)
-                {
-                    return tarea;
-                }
+                return tarea;
             }
             return Mensaje.SESION_INCORRECTA;
         }

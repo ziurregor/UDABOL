@@ -60,7 +60,10 @@ namespace Dao
                         }
                         campos.Add(linea);
                     }
-                    ExecuteNonQuery("create table if not exists " + tipo.Name + "(" + campos.Join(",") + ");");
+                    if (ExecuteNonQuery("create table if not exists " + tipo.Name + "(" + String.Join(",",campos) + ");"))
+                    {
+                        return true;
+                    }
                 }
 
             }catch (Exception ex)
@@ -71,13 +74,21 @@ namespace Dao
             return false;
         }
 
-        private void ExecuteNonQuery(String query) {
-            conexion.Open();
-            SQLiteCommand cmd = conexion.CreateCommand();
+        private Boolean ExecuteNonQuery(String query) {
+            try
+            {
+                conexion.Open();
+                SQLiteCommand cmd = conexion.CreateCommand();
 
-            cmd.CommandText = query;
-            cmd.ExecuteNonQuery();
-            conexion.Close();
+                cmd.CommandText = query;
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+                return true;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
         }
 
 
@@ -85,13 +96,16 @@ namespace Dao
         {
             if (condicion.Key != null && condicion.Value != null)
             {
-                ExecuteNonQuery("delete from " + _tipo.Name + " where " + condicion.Key+ "=\""+condicion.Value+"\"");
+                if (ExecuteNonQuery("delete from " + _tipo.Name + " where " + condicion.Key + "=\"" + condicion.Value + "\""))
+                {
+                    return true;
+                }
             }
             
-            return true;
+            return false;
         }
 
-        public bool EscribirTabla( List<IObjetoTexto> lista)
+        public bool EscribirTabla( List<IModeloBase> lista)
         {
             // TODO --->>Sqlite doesnt need this but may be we could implement a commit and rollback
             return true;
@@ -103,9 +117,9 @@ namespace Dao
             return true;
         }
 
-        public List<IObjetoTexto> LeerTabla()
+        public List<IModeloBase> LeerTabla()
         {
-            List<IObjetoTexto> lista = new List<IObjetoTexto>();
+            List<IModeloBase> lista = new List<IModeloBase>();
             String query = "Select * from "+ _tipo.Name;
             conexion.Open();
             SQLiteCommand cmd = new SQLiteCommand(query);
@@ -114,7 +128,7 @@ namespace Dao
             while (lector.Read())
             {
                 if (lector.HasRows && lector.FieldCount > 0) {
-                    IObjetoTexto objeto= ModeloFactory.darInstancia(_tipo);
+                    IModeloBase objeto= ModeloFactory.darInstancia(_tipo);
                     foreach (PropertyInfo propiedad in propiedades)
                     {
                         propiedad.SetValue(objeto, lector[propiedad.Name]);
@@ -154,6 +168,33 @@ namespace Dao
             }
             conexion.Close();
             return lista;
+        }
+
+        public bool Modificar(Dictionary<string, string> campos, KeyValuePair<string, string> condicion)
+        {
+            if (campos != null && condicion.Key != null && condicion.Value != null)
+            {
+                String query = "update "+_tipo.Name+" set "+String.Join(",",campos.Keys) + "values(" + String.Join(",", campos.Values.Select(p=>"\""+p+"\""))+")";
+                if (ExecuteNonQuery(query)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool Crear(IModeloBase fuente)
+        {
+            if (fuente != null)
+            {
+                //TODO -->> crear
+                /*String query = "insert into " + _tipo.Name + " (" + campos.Keys.Join(",") + ") values (" + campos.Values.Select(p => "\"" + p + "\"").Join(",") + ")";
+                if (ExecuteNonQuery(query))
+                {
+                    return true;
+                }*/
+            }
+            return false;
         }
     }
 }

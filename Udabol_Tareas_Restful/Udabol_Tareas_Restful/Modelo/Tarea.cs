@@ -6,7 +6,7 @@ using Negocio;
 
 namespace Modelo
 {
-    public class Tarea : IObjetoTexto
+    public class Tarea : ModeloBase
     {
 
         public Int32 Id { get; set; }
@@ -14,7 +14,7 @@ namespace Modelo
         public String Nombre { get; set; }
 
         private Usuario _usuario;
-        public Int32 Usuario { get { return _usuario.Id; } set { _usuario = ModeloFactory.Obtener<Usuario>(new KeyValuePair<string, string>("Id", value.ToString())); } }
+        public Int32 Usuario { get { return _usuario!=null?_usuario.Id : 0; } set { _usuario = ModeloFactory.Obtener<Usuario>(new KeyValuePair<string, string>("Id", value.ToString())); } }
         public String Estado { get; set; }
 
         public Tarea()
@@ -27,29 +27,10 @@ namespace Modelo
             return _usuario;
         }
 
-
-        public string guardarTexto()
+        override
+        public List<string> OrdenCampos()
         {
-            return Id.ToString() + "\t" + Fecha + "\t" + Nombre + "\t" + Usuario.ToString() + "\t" + Estado;
-        }
-
-        public IObjetoTexto leerTexto(string texto)
-        {
-            String[] columnas = texto.Split("\t");
-
-            if (columnas.Length > 4)
-            {
-                return new Tarea
-                {
-                    Id = Int32.Parse(columnas[0]),
-                    Fecha = columnas[1],
-                    Nombre = columnas[2],
-                    Usuario = Int32.Parse(columnas[3]),
-                    Estado = columnas[4]
-                };
-            }
-
-            return null;
+            return new List<string>() { "Id", "Fecha", "Nombre","Usuario","Estado" };
         }
     }
 }

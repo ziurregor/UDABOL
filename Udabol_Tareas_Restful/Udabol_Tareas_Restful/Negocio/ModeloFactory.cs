@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Text.Json;
 using Dao;
 using Modelo;
+using Util;
 
 namespace Negocio
 {
@@ -23,58 +25,24 @@ namespace Negocio
         // Insert Usuario(id,nombre,contrasena,estado)values(1,Fulanito de tal,******,Habilitado)
 
 
-        public static Boolean Crear(IObjetoTexto fuente)
+        public static Boolean Crear(IModeloBase fuente)
         {
-            Type tipo = fuente.GetType();
-            PropertyInfo[] propiedades = tipo.GetProperties();
-
-            Dictionary<String, String> campos = new Dictionary<String, String>();
-            foreach (PropertyInfo propiedadx in propiedades)
+            if (fuente != null)
             {
-                campos.Add(propiedadx.Name, propiedadx.GetValue(fuente).ToString());
+                return ConexionFactory.DarConexion(fuente.GetType()).Crear(fuente);
             }
-
-            return Crear(campos,tipo);
+            return false;
         }
 
-        public static Boolean Crear(Dictionary<String,String> campos,Type tipo) {
-            List<IObjetoTexto> lista = Listar(tipo);
-            PropertyInfo[] _propiedadesClase = tipo.GetProperties();
-            IObjetoTexto objeto = darInstancia(tipo);
-            foreach (PropertyInfo propiedad in _propiedadesClase) {
-                foreach (KeyValuePair<String,String> campo in campos) {
-                    if (campo.Key.Equals(propiedad.Name)) {
-                        switch (propiedad.PropertyType.Name)
-                        {
-                            case "Int32":
-                                propiedad.SetValue(objeto, Int32.Parse(campo.Value));
-                                break;
-                            case "Boolean":
-                                propiedad.SetValue(objeto, Boolean.Parse(campo.Value));
-                                break;
-                            default:
-                                propiedad.SetValue(objeto, campo.Value);
-                                break;
-                        }
-                    }
-                }
-            }
-
-            lista.Add(objeto);
-            ConexionFactory.DarConexion(tipo).EscribirTabla(lista);
-
-
-            return true;
-        }
 
         //Rol (Id Nombre  SuperUsuario)(1 UsuarioComun false)
         // Modficar (id,SuperUsuario)(1 true)
         // Usuario (Id Nombre Contrasena Rol Estado) (1 fulanito xxxxxx 1 Habilitado)
         // Modificar (id,Estado)(1 Deshabilitado)----->(id,Nombre Contrasena Rol,Estado)(1  fulanito xxxxxx 1 Deshabilitado)
 
-        public static Boolean Modificar<T>(T fuente, String identificador) {
-            fuente = ValidarNulos<T>(fuente, identificador);
-            if (fuente != null)
+        public static Boolean Modificar<T>(T fuente, String identificador)
+        {
+            if (fuente!= null)
             {
                 Type tipo = typeof(T);
                 PropertyInfo propiedad = tipo.GetProperty(identificador);
@@ -95,32 +63,45 @@ namespace Negocio
         }
 
 
+        public static Boolean Modificar<T>(JsonElement fuente, String identificador) {
+            Dictionary<String, String> campos = ValidarNulos<T>(fuente, identificador);
+            if (campos.Count > 0) {
+                KeyValuePair<String, String> condicion = new KeyValuePair<string, string>(identificador,fuente.TryGetProperty(Utilidades.firstLower(identificador),out JsonElement jsonId)?jsonId.ToString():"");
+                return Modificar<T>(campos, condicion);
+            }
+            return false;
+        }
 
-        public static T ValidarNulos<T>(T destino,string identificador)
-        {
-            if (destino != null)
+
+
+        public static Dictionary<String,String> ValidarNulos<T>(JsonElement jsonObjeto,String identificador) {
+
+            Dictionary<String, String> campos = new Dictionary<string, string>();
+            PropertyInfo[] propiedades = typeof(T).GetProperties();
+            try
             {
-                PropertyInfo propiedadId = typeof(T).GetProperty(identificador);
-                if (propiedadId != null)
+                JsonElement jsonId = jsonObjeto.GetProperty(Utilidades.firstLower(identificador));
+                T objeto = ModeloFactory.Obtener<T>(new KeyValuePair<string, string>(identificador,jsonId.ToString()));
+
+                foreach (PropertyInfo propiedad in propiedades)
                 {
-                    T origen = Obtener<T>(new KeyValuePair<string, string>(identificador, propiedadId.GetValue(destino).ToString()));
-                    if (origen != null)
+                    if (jsonObjeto.TryGetProperty(Utilidades.firstLower(propiedad.Name), out JsonElement jsonCampo))
                     {
-                        PropertyInfo[] propiedades = origen.GetType().GetProperties();
-                        foreach (PropertyInfo propiedad in propiedades)
-                        {
-                            if (propiedad.GetValue(destino)==null || (propiedad.PropertyType.Name.Equals("Int32")&& propiedad.GetValue(destino).Equals(0)))
-                            {
-                                propiedad.SetValue(destino, propiedad.GetValue(origen));
-                            }
-                        }
-                        return destino;
+                        MethodInfo metodo = jsonCampo.GetType().GetMethod("Get" + propiedad.PropertyType.Name);
+                        Object valorCampo = metodo.Invoke(jsonCampo, null);
+                        campos.Add(propiedad.Name, valorCampo.ToString());
+                    }
+                    else {
+                        campos.Add(propiedad.Name, propiedad.GetValue(objeto).ToString());
                     }
                 }
             }
-            return default;
-        }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
 
+            return campos;
+        }
 
 
         // Update Usuario set nombre=Juana Perez,estado=Deshabilitado where id=2
@@ -133,52 +114,15 @@ namespace Negocio
 
         public static Boolean Modificar(Dictionary<String, String> campos, KeyValuePair<String, String> condicion, Type tipo)
         {
-            PropertyInfo[] _propiedadesClase = tipo.GetProperties();
-            List<IObjetoTexto> listaAModificar = Listar(tipo);
-
-            foreach (IObjetoTexto objeto in listaAModificar)
-            {
-                Type tipoObjeto = objeto.GetType();
-                PropertyInfo _identificadorCondicion = tipoObjeto.GetProperty(condicion.Key);
-                String _valor = _identificadorCondicion.GetValue(objeto).ToString();
-                //id=2
-                //if(objeto.id==2)
-                if (_valor.Equals(condicion.Value))
-                {
-                    //Nombre=Juana......Estado=Deshabilitado
-                    foreach (PropertyInfo propiedad in _propiedadesClase)
-                    {
-                        foreach (KeyValuePair<String, String> campo in campos)
-                        {
-                            if (propiedad.Name.Equals(campo.Key))
-                            {
-                                switch (propiedad.PropertyType.Name)
-                                {
-                                    case "Int32":
-                                        propiedad.SetValue(objeto, Int32.Parse(campo.Value));
-                                        break;
-                                    default:
-                                        propiedad.SetValue(objeto, campo.Value);
-                                        break;
-                                }
-                                
-                            }
-                        }
-                    }
-                    ConexionFactory.DarConexion(tipo).EscribirTabla(listaAModificar);
-
-                    return true;
-                }
-            }
-            return false;
+            return ConexionFactory.DarConexion(tipo).Modificar(campos, condicion);
         }
 
         
 
-        public static List<IObjetoTexto> Listar(Type tipo)
+        public static List<IModeloBase> Listar(Type tipo)
         {
             IConexion _conexion= ConexionFactory.DarConexion(tipo);
-            List<IObjetoTexto> _lista = new List<IObjetoTexto>();
+            List<IModeloBase> _lista = new List<IModeloBase>();
 
             if (_conexion != null)
             {
@@ -204,7 +148,7 @@ namespace Negocio
 
 
 
-        public static List<IObjetoTexto> Listar(String tipo)
+        public static List<IModeloBase> Listar(String tipo)
         {
             return Listar(Type.GetType(tipo));
 
@@ -217,19 +161,19 @@ namespace Negocio
         }
 
 
-        public static IObjetoTexto Obtener(KeyValuePair<String, String> condicion,String tipoModelo)
+        public static IModeloBase Obtener(KeyValuePair<String, String> condicion,String tipoModelo)
         {
             return Obtener(condicion, Type.GetType(tipoModelo));
         }
 
 
-        public static IObjetoTexto Obtener(KeyValuePair<String, String> condicion,Type tipoModelo)
+        public static IModeloBase Obtener(KeyValuePair<String, String> condicion,Type tipoModelo)
         {
 
-            List<IObjetoTexto> lista = Listar(tipoModelo);
+            List<IModeloBase> lista = Listar(tipoModelo);
             if (lista != null)
             {
-                foreach (IObjetoTexto objeto in lista)
+                foreach (IModeloBase objeto in lista)
                 {
                     if (objeto != null)
                     {
@@ -267,11 +211,11 @@ namespace Negocio
         //ModeloBase.darInstancia("Modelo.Rol")----->new Rol()
         //ModeloBase.darInstancia("Modelo.Usuario")----->new Usuario()
         //Factory Method--->Patron de diseño
-        public static IObjetoTexto darInstancia(Type tipo) {
-            return (IObjetoTexto)Activator.CreateInstance(tipo);
+        public static IModeloBase darInstancia(Type tipo) {
+            return (IModeloBase)Activator.CreateInstance(tipo);
         }
 
-        public static IObjetoTexto darInstancia(String tipo)
+        public static IModeloBase darInstancia(String tipo)
         {
             return darInstancia(Type.GetType(tipo));
         }
@@ -286,7 +230,7 @@ namespace Negocio
         //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
         // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
         //ModeloBase.ObtenerCampoValor(rol,"nombre");
-        public static Object ObtenerCampoValor(IObjetoTexto objeto, String campo)
+        public static Object ObtenerCampoValor(IModeloBase objeto, String campo)
         {
             //ToTitleCase ---> PascalCase
             TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;

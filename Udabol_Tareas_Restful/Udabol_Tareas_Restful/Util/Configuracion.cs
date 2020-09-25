@@ -14,7 +14,7 @@ namespace Util
         }
 
 
-        public static Int32 tiempoSesion = 30;
+        public static Int32 tiempoSesion = 360;
         public static Database baseDatos = Database.Texto;
         public static String baseDatosNombre = "Tareas";
     }

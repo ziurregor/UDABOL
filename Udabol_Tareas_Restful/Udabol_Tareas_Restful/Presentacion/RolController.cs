@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Negocio;
 using Modelo;
 using Util;
+using System.Reflection;
+using System.Text.Json;
+using static System.Text.Json.JsonElement;
 
 namespace Controllers
 {
@@ -45,17 +48,17 @@ namespace Controllers
 
         // PUT: Rol/5
         [HttpPut("{id}/{sesionId}")]
-        public Mensaje PutRol(int id, String sesionId, Rol rol)
+        public Mensaje PutRol(int id, String sesionId, JsonElement objeto)
         {
             if (Sesion.VerificarSesion(sesionId, true) != null)
             {
-                if (id != rol.Id)
+
+                if (objeto.TryGetProperty("id",out JsonElement jsonId) && !jsonId.ToString().Equals(id.ToString()))
                 {
                     return Mensaje.DATOS_ID;
                 }
 
-
-                if (ModeloFactory.Modificar(rol, "Id"))
+                if (ModeloFactory.Modificar<Rol>(objeto, "Id"))
                 {
                     return Mensaje.MODIFICO_EXITO;
                 }

@@ -6,30 +6,16 @@ using Negocio;
 
 namespace Modelo
 {
-    public class Rol:IObjetoTexto
+    public class Rol:ModeloBase
     {
         public Int32 Id { get; set; }
         public String Nombre { get; set; }
         public Boolean SuperUsuario { get; set; }
 
-        public string guardarTexto()
+        override
+        public List<string> OrdenCampos()
         {
-            return Id.ToString() + "\t" + Nombre+"\t"+SuperUsuario.ToString();
-        }
-
-        public IObjetoTexto leerTexto(string texto)
-        {
-            String[] columnas = texto.Split("\t");
-            if (columnas.Length > 2)
-            {
-                Rol rol = new Rol
-                {
-                    Id = Int32.Parse(columnas[0]),
-                    Nombre = columnas[1],
-                    SuperUsuario = Boolean.Parse(columnas[2])
-                }; return rol;
-            }
-            return null;
+            return new List<string>() { "Id","Nombre","SuperUsuario"};
         }
     }
 }

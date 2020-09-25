@@ -1,3 +1,4 @@
-﻿1	2020-09-22	T1	2	En Proceso
-3	2020-09-23	T3	1	En Proceso
-5	2020-09-23	Tarea 5	2	Activo
+1	2020-09-22	T1	2	En Proceso
+2	2020-09-23	T2	1	Terminado
+3	2020-09-23	T3	2	Activo
+4	2020-09-25	T4	2	Terminado

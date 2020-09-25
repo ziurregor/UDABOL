@@ -17,7 +17,14 @@ namespace Util
 
         public static string DeBase64(String texto)
         {
-            return System.Text.ASCIIEncoding.ASCII.GetString(System.Convert.FromBase64String(texto));
+            try
+            {
+                return System.Text.ASCIIEncoding.ASCII.GetString(System.Convert.FromBase64String(texto));
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
         }
 
         private static string MD5(this string s)
@@ -43,7 +50,9 @@ namespace Util
             return System.Console.ReadLine();
         }
 
-
+        public static string firstLower(string text) {
+            return text.Substring(0, 1).ToLower() + text.Substring(1);
+        }
 
     }
 }

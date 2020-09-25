@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Negocio;
 using Modelo;
 using Util;
+using System.Text.Json;
 
 namespace Controllers
 {
@@ -42,21 +43,27 @@ namespace Controllers
 
         // PUT: Usuario/5
         [HttpPut("{id}/{sesionId}")]
-        public Mensaje PutUsuario(int id,String sesionId, Usuario usuario)
+        public Mensaje PutUsuario(int id,String sesionId, JsonElement objeto)
         {
             if (Sesion.VerificarSesion(sesionId, true) != null)
             {
-                if (id != usuario.Id)
+                if (objeto.TryGetProperty("id", out JsonElement jsonId) && !jsonId.ToString().Equals(id.ToString()))
                 {
                     return Mensaje.DATOS_ID;
                 }
-
-
-                if (ModeloFactory.Modificar(usuario, "Id"))
+                String identificador = "Id";
+                Dictionary<String, String> campos = ModeloFactory.ValidarNulos<Usuario>(objeto, identificador);
+                if (campos.Count > 0)
                 {
-                    return Mensaje.MODIFICO_EXITO;
+                    KeyValuePair<String, String> condicion = new KeyValuePair<string, string>(identificador, campos[identificador]);
+                    if (objeto.TryGetProperty("contrasena",out JsonElement jsonCon)) {
+                        campos["Contrasena"] = Utilidades.encriptarContrasena(campos["Nombre"],campos["Contrasena"]);
+                    }
+                    if (ModeloFactory.Modificar<Usuario>(campos, condicion))
+                    {
+                        return Mensaje.MODIFICO_EXITO;
+                    }
                 }
-
                 return Mensaje.NO_MODIFICAR;
             }
             return Mensaje.SESION_INCORRECTA;
@@ -85,11 +92,14 @@ namespace Controllers
                 Usuario usuario = ModeloFactory.Obtener<Usuario>(new KeyValuePair<string, string>("Id", id.ToString()));
                 if (usuario == null)
                 {
-                    if (ModeloFactory.Eliminar<Usuario>(new KeyValuePair<string, string>("Id", id.ToString())))
-                    {
-                        return usuario;
-                    }
+                    return Mensaje.DATOS_ID;
                 }
+
+                if (ModeloFactory.Eliminar<Usuario>(new KeyValuePair<string, string>("Id", id.ToString())))
+                {
+                    return usuario;
+                }
+
             }
             return Mensaje.SESION_INCORRECTA;
             

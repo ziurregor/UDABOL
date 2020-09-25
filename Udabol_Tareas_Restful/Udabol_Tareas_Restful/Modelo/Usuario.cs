@@ -7,16 +7,16 @@ using Negocio;
 
 namespace Modelo
 {
-    public class Usuario : IObjetoTexto
+    public class Usuario : ModeloBase
     {
         public Int32  Id { get; set; }
         public String Nombre { get; set; }
 
         public String _contrasena;//variable oculta
-        public String Contrasena { get { return _contrasena; } set {_contrasena=Utilidades.encriptarContrasena(Nombre,value);} }
+        public String Contrasena { get { return _contrasena; } set {_contrasena=Utilidades.encriptarContrasena(Nombre,value); } }
 
         private Rol _rol;//variable oculta de Tipo Rol
-        public Int32 Rol { get { return _rol.Id; } set { _rol = ModeloFactory.Obtener<Rol>(new KeyValuePair<string, string>("Id", value.ToString())); } }
+        public Int32 Rol { get { return _rol!=null?_rol.Id:0; } set { _rol = ModeloFactory.Obtener<Rol>(new KeyValuePair<string, string>("Id", value.ToString())); } }
 
         public Usuario() {
             _rol = new Rol();
@@ -29,26 +29,21 @@ namespace Modelo
             return _rol;
         }
 
-        public string guardarTexto()
-        {
-            return Id.ToString() + "\t" + Nombre+ "\t" + Contrasena+ "\t" + Rol.ToString() + "\t" + Estado;
+        public void SetContrasena(String contrasena) {
+            _contrasena = contrasena;
         }
 
-        public IObjetoTexto leerTexto(string texto)
+        override
+        public List<string> OrdenCampos()
         {
-            String[] columnas = texto.Split("\t");
-            if (columnas.Length > 4)
-            {
-                Usuario usuario = new Usuario
-                {
-                    Id = Int32.Parse(columnas[0]),
-                    Nombre = columnas[1],
-                    _contrasena = columnas[2],
-                    Rol = Int32.Parse( columnas[3]),
-                    Estado = columnas[4]
-                }; return usuario;
-            }
-            return null;
+            return new List<string>() { "Id", "Nombre", "Contrasena","Rol","Estado" };
         }
+
+        override
+        public Dictionary<String, String> Excepciones()
+        {
+            return new Dictionary<string, string>() { { "Contrasena","SetContrasena"} };
+        }
+
     }
 }

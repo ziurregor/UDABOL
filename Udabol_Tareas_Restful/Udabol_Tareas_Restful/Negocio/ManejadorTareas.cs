@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Modelo;
@@ -16,26 +17,36 @@ namespace Negocio
 
 
         //un usuario solo puede modificar sus propias tareas a menos que sea un SuperUsuario
-        public static bool Modificar(Tarea tarea, string sesionId)
+
+        public static bool Modificar(JsonElement objetoJson, string sesionId)
         {
-            Usuario usuario = Sesion.VerificarSesion(sesionId);
-            tarea = ModeloFactory.ValidarNulos<Tarea>(tarea, "Id");
-            if (usuario != null && tarea != null && tarea.GetUsuario() != null && (usuario.Id == tarea.GetUsuario().Id || usuario.GetRol().SuperUsuario))
+
+            Dictionary<String, String> campos = ModeloFactory.ValidarNulos<Tarea>(objetoJson, "Id");
+            if (campos.Count > 0)
             {
-                if (usuario.GetRol().SuperUsuario)
+                Usuario usuario = Sesion.VerificarSesion(sesionId);
+
+
+                if (usuario != null && ((campos.ContainsKey("Usuario") && usuario.Id.ToString() == campos["Usuario"]) || usuario.GetRol().SuperUsuario))
                 {
-                    return ModeloFactory.Modificar(tarea, "Id");
-                }
-                else
-                {
-                    //solo puede modificar el Estado
-                    return ModeloFactory.Modificar<Tarea>(new Dictionary<string, string> { { "Estado", tarea.Estado } }, new KeyValuePair<string, string>("Id", tarea.Id.ToString()));
+                    if (usuario.GetRol().SuperUsuario)
+                    {
+                        return ModeloFactory.Modificar<Tarea>(campos, new KeyValuePair<string, string>("Id", objetoJson.GetProperty("id").ToString()));
+                    }
+                    else
+                    {
+                        //solo puede modificar el Estado
+                        if (objetoJson.TryGetProperty("estado", out JsonElement estado))
+                        {
+                            return ModeloFactory.Modificar<Tarea>(new Dictionary<string, string> { { "Estado", estado.ToString() } }, new KeyValuePair<string, string>("Id", objetoJson.GetProperty("id").ToString()));
+                        }
+                    }
                 }
             }
             return false;
         }
 
-        
+
 
         public static bool Crear(Tarea tarea, string sesionId)
         {
