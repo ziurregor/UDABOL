@@ -25,6 +25,7 @@ namespace Dao
                 String directorioActual = Directory.GetCurrentDirectory();
                 String archivo = "DataSource="+directorioActual + "\\" + Configuracion.baseDatosNombre + ".db";
                 conexion = new SQLiteConnection(archivo);
+                conexion.Open();
             }
         }
 
@@ -77,12 +78,10 @@ namespace Dao
         private Boolean ExecuteNonQuery(String query) {
             try
             {
-                conexion.Open();
                 SQLiteCommand cmd = conexion.CreateCommand();
 
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
-                conexion.Close();
                 return true;
             }
             catch (Exception ex) {
@@ -121,24 +120,32 @@ namespace Dao
         {
             List<IModeloBase> lista = new List<IModeloBase>();
             String query = "Select * from "+ _tipo.Name;
-            conexion.Open();
-            SQLiteCommand cmd = new SQLiteCommand(query);
+            SQLiteCommand cmd =conexion.CreateCommand();
+            cmd.CommandText = query;
             SQLiteDataReader lector = cmd.ExecuteReader();
-            PropertyInfo[] propiedades = _tipo.GetProperties();
+
             while (lector.Read())
             {
-                if (lector.HasRows && lector.FieldCount > 0) {
-                    IModeloBase objeto= ModeloFactory.darInstancia(_tipo);
-                    foreach (PropertyInfo propiedad in propiedades)
-                    {
-                        propiedad.SetValue(objeto, lector[propiedad.Name]);
+                if (lector.HasRows && lector.FieldCount > 0)
+                {
+                    IModeloBase objeto = ModeloFactory.darInstancia(_tipo);
+                    List<String> listaCampos = objeto.OrdenCampos();
 
+                    Dictionary<String, String> excepciones = objeto.Excepciones();
+
+                    foreach (String campo in listaCampos)
+                    {
+                        if (!campo.Trim().Equals(""))
+                        {
+                            PropertyInfo propiedad = _tipo.GetProperty(campo);
+                            Utilidades.PasarValorCampo(excepciones, propiedad, objeto, lector[propiedad.Name].ToString());
+                        }
                     }
+
                     lista.Add(objeto);
 
                 }
             }
-            conexion.Close();
             return lista;
         }
 
@@ -146,27 +153,32 @@ namespace Dao
         {
             List<T> lista = new List<T>();
             String query = "Select * from " + typeof(T).Name;
-            conexion.Open();
-            SQLiteCommand cmd = new SQLiteCommand(query);
+            SQLiteCommand cmd = conexion.CreateCommand();
+            cmd.CommandText = query;
             SQLiteDataReader lector = cmd.ExecuteReader();
-            PropertyInfo[] propiedades = _tipo.GetProperties();
             while (lector.Read())
             {
 
                 if (lector.HasRows && lector.FieldCount > 0)
                 {
-                    T objeto = ModeloFactory.darInstancia<T>();
-                    foreach (PropertyInfo propiedad in propiedades)
-                    {
-                        propiedad.SetValue(objeto, lector[propiedad.Name]);
+                    IModeloBase objeto = ModeloFactory.darInstancia(typeof(T));
+                    List<String> listaCampos = objeto.OrdenCampos();
 
+                    Dictionary<String, String> excepciones = objeto.Excepciones();
+
+                    foreach (String campo in listaCampos)
+                    {
+                        if (!campo.Trim().Equals(""))
+                        {
+                            PropertyInfo propiedad = _tipo.GetProperty(campo);
+                            Utilidades.PasarValorCampo(excepciones, propiedad, objeto, lector[propiedad.Name].ToString());
+                        }
                     }
-                    lista.Add(objeto);
+                    lista.Add((T)objeto);
 
                 }
 
             }
-            conexion.Close();
             return lista;
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
+using Modelo;
 
 namespace Util
 {
@@ -52,6 +54,49 @@ namespace Util
 
         public static string firstLower(string text) {
             return text.Substring(0, 1).ToLower() + text.Substring(1);
+        }
+
+        public static void PasarValorCampo(Dictionary<String, String> excepciones, PropertyInfo propiedad, IModeloBase objeto, String valor)
+        {
+            if (propiedad != null && objeto!=null)
+            {
+                Type _tipo = objeto.GetType();
+                if (excepciones.ContainsKey(propiedad.Name))
+                {
+                    MethodInfo metodo = _tipo.GetMethod(excepciones[propiedad.Name]);
+                    if (metodo != null)
+                    {
+
+                        switch (propiedad.PropertyType.Name)
+                        {
+                            case "Int32":
+                                metodo.Invoke(objeto, new object[] { Int32.Parse(valor) });
+                                break;
+                            case "Boolean":
+                                metodo.Invoke(objeto, new object[] { Boolean.Parse(valor) });
+                                break;
+                            default:
+                                metodo.Invoke(objeto, new object[] { valor });
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    switch (propiedad.PropertyType.Name)
+                    {
+                        case "Int32":
+                            propiedad.SetValue(objeto, Int32.Parse(valor));
+                            break;
+                        case "Boolean":
+                            propiedad.SetValue(objeto, Boolean.Parse(valor));
+                            break;
+                        default:
+                            propiedad.SetValue(objeto, valor);
+                            break;
+                    }
+                }
+            }
         }
 
     }

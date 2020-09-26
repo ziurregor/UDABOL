@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using Modelo;
 using Negocio;
+using Util;
 
 namespace Dao
 {
@@ -51,7 +52,7 @@ namespace Dao
                     foreach (KeyValuePair<String, String> campo in campos)
                     {
                         PropertyInfo propiedad = tipoObjeto.GetProperty(campo.Key);
-                        PasarValorCampo(excepciones,propiedad,objeto,campo.Value);
+                        Utilidades.PasarValorCampo(excepciones,propiedad,objeto,campo.Value);
                     }
                     EscribirTabla(listaAModificar);
 
@@ -61,47 +62,7 @@ namespace Dao
             return false;
         }
 
-        private void PasarValorCampo(Dictionary<String,String> excepciones,PropertyInfo propiedad,IModeloBase objeto,String valor)
-        {
-            if (propiedad != null)
-            {
-                if (excepciones.ContainsKey(propiedad.Name))
-                {
-                    MethodInfo metodo = _tipo.GetMethod(excepciones[propiedad.Name]);
-                    if (metodo != null)
-                    {
-
-                        switch (propiedad.PropertyType.Name)
-                        {
-                            case "Int32":
-                                metodo.Invoke(objeto, new object[] { Int32.Parse(valor) });
-                                break;
-                            case "Boolean":
-                                metodo.Invoke(objeto, new object[] { Boolean.Parse(valor) });
-                                break;
-                            default:
-                                metodo.Invoke(objeto, new object[] { valor });
-                                break;
-                        }
-                    }
-                }
-                else
-                {
-                    switch (propiedad.PropertyType.Name)
-                    {
-                        case "Int32":
-                            propiedad.SetValue(objeto, Int32.Parse(valor));
-                            break;
-                        case "Boolean":
-                            propiedad.SetValue(objeto, Boolean.Parse(valor));
-                            break;
-                        default:
-                            propiedad.SetValue(objeto, valor);
-                            break;
-                    }
-                }
-            }
-        }
+        
 
 
         /* ROL
@@ -238,7 +199,7 @@ namespace Dao
                 if (camposValor.Length > indice && !campo.Trim().Equals("") && !camposValor[indice].Trim().Equals(""))
                 {
                     PropertyInfo propiedad = _tipo.GetProperty(campo);
-                    PasarValorCampo(excepciones, propiedad, objeto, camposValor[indice]);
+                    Utilidades.PasarValorCampo(excepciones, propiedad, objeto, camposValor[indice]);
                 }
                 indice++;
             }

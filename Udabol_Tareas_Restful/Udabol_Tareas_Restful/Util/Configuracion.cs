@@ -15,7 +15,7 @@ namespace Util
 
 
         public static Int32 tiempoSesion = 360;
-        public static Database baseDatos = Database.Texto;
+        public static Database baseDatos = Database.SQLite;
         public static String baseDatosNombre = "Tareas";
     }
 }
