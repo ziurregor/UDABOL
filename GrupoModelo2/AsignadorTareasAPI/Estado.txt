@@ -1,0 +1,6 @@
+EstadoID	NombreEstado
+1	Activo
+2	Inactivo
+3	En Espera
+4	En Progreso
+5	Finalizado

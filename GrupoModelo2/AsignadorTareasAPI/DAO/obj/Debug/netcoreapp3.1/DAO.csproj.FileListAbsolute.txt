@@ -1,0 +1,12 @@
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\obj\Debug\netcoreapp3.1\DAO.csprojAssemblyReference.cache
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\obj\Debug\netcoreapp3.1\DAO.AssemblyInfoInputs.cache
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\obj\Debug\netcoreapp3.1\DAO.AssemblyInfo.cs
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\obj\Debug\netcoreapp3.1\DAO.csproj.CoreCompileInputs.cache
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\bin\Debug\netcoreapp3.1\DAO.deps.json
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\bin\Debug\netcoreapp3.1\DAO.dll
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\bin\Debug\netcoreapp3.1\DAO.pdb
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\bin\Debug\netcoreapp3.1\Modelo.dll
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\bin\Debug\netcoreapp3.1\Modelo.pdb
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\obj\Debug\netcoreapp3.1\DAO.csproj.CopyComplete
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\obj\Debug\netcoreapp3.1\DAO.dll
+C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\DAO\obj\Debug\netcoreapp3.1\DAO.pdb

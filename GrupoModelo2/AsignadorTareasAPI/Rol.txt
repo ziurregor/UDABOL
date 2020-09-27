@@ -1,0 +1,4 @@
+RolID	NombreRol
+1	Super
+2	Admin
+3	Simple
