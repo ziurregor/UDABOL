@@ -186,7 +186,7 @@ namespace Dao
         {
             if (campos != null && condicion.Key != null && condicion.Value != null)
             {
-                String query = "update "+_tipo.Name+" set "+String.Join(",",campos.Keys) + "values(" + String.Join(",", campos.Values.Select(p=>"\""+p+"\""))+")";
+                String query = "update "+_tipo.Name+" set "+String.Join(",",campos.Select(p=>p.Key+"=\""+p.Value+"\"")) + " where " + condicion.Key+"=\""+condicion.Value+"\";";
                 if (ExecuteNonQuery(query)) {
                     return true;
                 }
@@ -199,12 +199,17 @@ namespace Dao
         {
             if (fuente != null)
             {
-                //TODO -->> crear
-                /*String query = "insert into " + _tipo.Name + " (" + campos.Keys.Join(",") + ") values (" + campos.Values.Select(p => "\"" + p + "\"").Join(",") + ")";
+                PropertyInfo[] propiedades = _tipo.GetProperties();
+                Dictionary<String, String> campos = new Dictionary<string, string>();
+                foreach (PropertyInfo propiedad in propiedades)
+                {
+                    campos.Add(propiedad.Name,propiedad.GetValue(fuente).ToString());
+                }
+                String query = "insert into " + _tipo.Name + " (" + String.Join(",",campos.Keys)+ ") values (" + String.Join(",",campos.Values.Select(p => "\"" + p + "\"")) + ");";
                 if (ExecuteNonQuery(query))
                 {
                     return true;
-                }*/
+                }
             }
             return false;
         }

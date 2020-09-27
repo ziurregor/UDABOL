@@ -232,47 +232,16 @@ namespace Dao
             return lista;
         }
 
-        //Insert
-        public bool Crear(Dictionary<string, string> campos)
-        {
-            List<IModeloBase> lista = LeerTabla();
-            PropertyInfo[] _propiedadesClase = _tipo.GetProperties();
-            IModeloBase objeto = ModeloFactory.darInstancia(_tipo);
-            foreach (KeyValuePair<String, String> campo in campos)
-            {
-                PropertyInfo propiedad = _tipo.GetProperty(campo.Key);
-                if (propiedad != null && propiedad.Name.Equals(campo.Key))
-                {
-                    switch (propiedad.PropertyType.Name)
-                    {
-                        case "Int32":
-                            propiedad.SetValue(objeto, Int32.Parse(campo.Value));
-                            break;
-                        case "Boolean":
-                            propiedad.SetValue(objeto, Boolean.Parse(campo.Value));
-                            break;
-                        default:
-                            propiedad.SetValue(objeto, campo.Value);
-                            break;
-                    }
-                }
-            }
-
-
-            lista.Add(objeto);
-            EscribirTabla(lista);
-            return true;
-        }
-
         public bool Crear(IModeloBase fuente)
         {
-            List<IModeloBase> lista = LeerTabla();
             if (fuente != null)
             {
+                List<IModeloBase> lista = LeerTabla();
                 lista.Add(fuente);
+                EscribirTabla(lista);
+                return true;
             }
-            EscribirTabla(lista);
-            return true;
+            return false;
         }
 
     }
