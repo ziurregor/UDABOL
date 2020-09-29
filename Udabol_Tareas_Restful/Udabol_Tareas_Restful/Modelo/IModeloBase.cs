@@ -8,5 +8,9 @@ namespace Modelo
     {
         public List<String> OrdenCampos();
         public Dictionary<String, String> Excepciones();
+
+        public String darLlave();
+
+        public Boolean llaveEsAutoIncremental();
     }
 }

@@ -9,6 +9,7 @@ using Util;
 using System.Reflection;
 using System.Text.Json;
 using static System.Text.Json.JsonElement;
+using Microsoft.AspNetCore.Cors;
 
 namespace Controllers
 {

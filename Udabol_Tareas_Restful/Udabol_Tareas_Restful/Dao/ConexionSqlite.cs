@@ -23,7 +23,28 @@ namespace Dao
             if (conexion == null) {
 
                 String directorioActual = Directory.GetCurrentDirectory();
-                String archivo = "DataSource="+directorioActual + "\\" + Configuracion.baseDatosNombre + ".db";
+                String directorioSeparador = "/";
+
+                OperatingSystem os = Environment.OSVersion;
+                PlatformID pid = os.Platform;
+                switch (pid)
+                {
+                    case PlatformID.Win32NT:
+                    case PlatformID.Win32S:
+                    case PlatformID.Win32Windows:
+                    case PlatformID.WinCE:
+                        directorioSeparador="\\";
+                        break;
+                    case PlatformID.Unix:
+                    case PlatformID.MacOSX:
+                        directorioSeparador = "/";
+                        break;
+                    default:
+                        directorioSeparador = "/";
+                        break;
+                }
+
+            String archivo = "DataSource="+directorioActual + directorioSeparador + Configuracion.baseDatosNombre + ".db";
                 conexion = new SQLiteConnection(archivo);
                 conexion.Open();
             }

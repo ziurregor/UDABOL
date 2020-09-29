@@ -32,5 +32,17 @@ namespace Modelo
         {
             return new List<string>() { "Id", "Fecha", "Nombre","Usuario","Estado" };
         }
+
+        override
+        public String darLlave()
+        {
+            return "Id";
+        }
+
+        override
+        public Boolean llaveEsAutoIncremental()
+        {
+            return true;
+        }
     }
 }

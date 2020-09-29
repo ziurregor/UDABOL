@@ -7,6 +7,7 @@ using Negocio;
 using Modelo;
 using Util;
 using System.Text.Json;
+using Microsoft.AspNetCore.Cors;
 
 namespace Controllers
 {

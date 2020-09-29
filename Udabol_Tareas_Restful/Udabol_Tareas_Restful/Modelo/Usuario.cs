@@ -45,5 +45,16 @@ namespace Modelo
             return new Dictionary<string, string>() { { "Contrasena","SetContrasena"} };
         }
 
+        override
+        public String darLlave()
+        {
+            return "Id";
+        }
+
+        override
+        public Boolean llaveEsAutoIncremental()
+        {
+            return true;
+        }
     }
 }

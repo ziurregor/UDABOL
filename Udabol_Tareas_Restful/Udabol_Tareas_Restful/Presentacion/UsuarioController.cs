@@ -7,6 +7,7 @@ using Negocio;
 using Modelo;
 using Util;
 using System.Text.Json;
+using Microsoft.AspNetCore.Cors;
 
 namespace Controllers
 {
@@ -40,6 +41,18 @@ namespace Controllers
             }
             return Mensaje.SESION_INCORRECTA;
         }
+
+        // GET: Usuario/tareas/5
+        [HttpGet("tareas/{id}/{sesionId}")]
+        public Object GetUsuarioTareas(int id, String sesionId)
+        {
+            if (Sesion.VerificarSesion(sesionId, true) != null)
+            {
+                return ModeloFactory.Obtener<Tarea>(new KeyValuePair<String, String>("usuario", id.ToString()));
+            }
+            return Mensaje.SESION_INCORRECTA;
+        }
+
 
         // PUT: Usuario/5
         [HttpPut("{id}/{sesionId}")]

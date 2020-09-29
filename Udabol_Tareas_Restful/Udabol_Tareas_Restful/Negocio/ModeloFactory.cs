@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using Dao;
@@ -29,7 +30,19 @@ namespace Negocio
         {
             if (fuente != null)
             {
-                return ConexionFactory.DarConexion(fuente.GetType()).Crear(fuente);
+                IConexion conexion = ConexionFactory.DarConexion(fuente.GetType());
+                String llave = fuente.darLlave();
+                Boolean esAutoIncremental = fuente.llaveEsAutoIncremental();
+
+                if(llave!=null && !llave.Equals("") && esAutoIncremental){
+                    PropertyInfo propiedad = fuente.GetType().GetProperty(llave);
+                    if (propiedad != null && (propiedad.GetValue(fuente)==null || (propiedad.GetValue(fuente) != null && propiedad.PropertyType.Name.Equals("Int32") && propiedad.GetValue(fuente).Equals(0)))) {
+                        int max=Int32.Parse(conexion.LeerTabla().Max(p => propiedad.GetValue(p)).ToString());
+                        propiedad.SetValue(fuente, max + 1);
+                    }
+                }
+
+                return conexion.Crear(fuente);
             }
             return false;
         }

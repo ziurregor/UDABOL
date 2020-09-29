@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Modelo;
 using Negocio;
@@ -10,6 +8,7 @@ using Util;
 
 namespace Udabol_Tareas_Restful.Presentacion
 {
+    [EnableCors]
     [Route("[controller]")]
     [ApiController]
     public class LoginController : ControllerBase

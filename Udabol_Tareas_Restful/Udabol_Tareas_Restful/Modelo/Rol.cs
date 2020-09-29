@@ -6,7 +6,7 @@ using Negocio;
 
 namespace Modelo
 {
-    public class Rol:ModeloBase
+    public class Rol : ModeloBase
     {
         public Int32 Id { get; set; }
         public String Nombre { get; set; }
@@ -16,6 +16,18 @@ namespace Modelo
         public List<string> OrdenCampos()
         {
             return new List<string>() { "Id","Nombre","SuperUsuario"};
+        }
+
+        override
+        public String darLlave()
+        {
+            return "Id";
+        }
+        
+        override
+        public Boolean llaveEsAutoIncremental()
+        {
+            return true;
         }
     }
 }
