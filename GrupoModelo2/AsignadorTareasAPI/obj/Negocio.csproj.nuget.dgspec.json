@@ -1,0 +1,175 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\Negocio.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\DAO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\DAO.csproj",
+        "projectName": "DAO",
+        "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\DAO.csproj",
+        "packagesPath": "C:\\Users\\EliothWithoutH\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\EliothWithoutH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {
+                "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj",
+        "projectName": "Modelo",
+        "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj",
+        "packagesPath": "C:\\Users\\EliothWithoutH\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\EliothWithoutH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\Negocio.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\Negocio.csproj",
+        "projectName": "Negocio",
+        "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\Negocio.csproj",
+        "packagesPath": "C:\\Users\\EliothWithoutH\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\EliothWithoutH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\DAO.csproj": {
+                "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\DAO.csproj"
+              },
+              "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {
+                "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
