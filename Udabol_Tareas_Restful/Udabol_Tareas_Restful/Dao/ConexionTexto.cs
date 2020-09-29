@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,6 +16,7 @@ namespace Dao
         private String _archivo;
         private String _contenido;
         private Type _tipo;
+        private static Dictionary<Type, List<IModeloBase>> listas = new Dictionary<Type, List<IModeloBase>>();//TODO->>> Destinado a optimizar la lectura de las listas
 
         public bool Conectar(Type tipo)
         {
@@ -243,6 +245,28 @@ namespace Dao
             }
             return false;
         }
+        public IModeloBase Obtener(KeyValuePair<String, String> condicion)
+        {
 
+            List<IModeloBase> lista = LeerTabla ();
+            if (lista != null)
+            {
+                foreach (IModeloBase objeto in lista)
+                {
+                    if (objeto != null)
+                    {
+                        Object valor = Utilidades.ObtenerCampoValor(objeto, condicion.Key);
+
+                        if (valor != null && valor.ToString().Equals(condicion.Value))
+                        {
+                            return objeto;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+       
     }
 }

@@ -118,9 +118,13 @@ namespace Dao
 
         public List<IModeloBase> LeerTabla()
         {
+            return EjecutarQuery("Select * from " + _tipo.Name);
+        }
+
+        private List<IModeloBase> EjecutarQuery(string query)
+        {
             List<IModeloBase> lista = new List<IModeloBase>();
-            String query = "Select * from "+ _tipo.Name;
-            SQLiteCommand cmd =conexion.CreateCommand();
+            SQLiteCommand cmd = conexion.CreateCommand();
             cmd.CommandText = query;
             SQLiteDataReader lector = cmd.ExecuteReader();
 
@@ -143,7 +147,6 @@ namespace Dao
                     }
 
                     lista.Add(objeto);
-
                 }
             }
             return lista;
@@ -212,6 +215,18 @@ namespace Dao
                 }
             }
             return false;
+        }
+
+        public IModeloBase Obtener(KeyValuePair<string, string> condicion)
+        {
+            if (condicion.Key!=null && condicion.Value!=null) {
+                String query = "select * from "+_tipo.Name+" where "+condicion.Key+"=\""+condicion.Value+"\" limit 1;";
+                List<IModeloBase> lista = EjecutarQuery(query);
+                if (lista.Count > 0) {
+                    return lista.First();
+                }
+            }
+            return null;
         }
     }
 }

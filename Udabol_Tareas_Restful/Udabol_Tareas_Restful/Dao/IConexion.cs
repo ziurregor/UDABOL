@@ -23,5 +23,7 @@ namespace Dao
         public Boolean Guardar();
 
         bool Crear(IModeloBase fuente);
+
+        public IModeloBase Obtener(KeyValuePair<String, String> condicion);
     }
 }

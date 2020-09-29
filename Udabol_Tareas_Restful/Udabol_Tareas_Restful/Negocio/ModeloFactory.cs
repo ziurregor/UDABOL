@@ -169,24 +169,7 @@ namespace Negocio
 
         public static IModeloBase Obtener(KeyValuePair<String, String> condicion,Type tipoModelo)
         {
-
-            List<IModeloBase> lista = Listar(tipoModelo);
-            if (lista != null)
-            {
-                foreach (IModeloBase objeto in lista)
-                {
-                    if (objeto != null)
-                    {
-                        Object valor = ObtenerCampoValor(objeto, condicion.Key);
-
-                        if (valor != null && valor.ToString().Equals(condicion.Value))
-                        {
-                            return objeto;
-                        }
-                    }
-                }
-            }
-            return null;
+            return ConexionFactory.DarConexion(tipoModelo).Obtener(condicion);
         }
 
         //delete from Usuario where id=2
@@ -227,19 +210,6 @@ namespace Negocio
         }
 
 
-        //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
-        // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
-        //ModeloBase.ObtenerCampoValor(rol,"nombre");
-        public static Object ObtenerCampoValor(IModeloBase objeto, String campo)
-        {
-            //ToTitleCase ---> PascalCase
-            TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
-            PropertyInfo propiedad = objeto.GetType().GetProperty(textInfo.ToTitleCase(campo));
-            if (propiedad != null)
-            {
-                return propiedad.GetValue(objeto);
-            }
-            return null;
-        }
+        
     }
 }

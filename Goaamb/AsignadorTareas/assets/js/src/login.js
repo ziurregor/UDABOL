@@ -14,5 +14,14 @@ function submitLoginForm() {
 }
 
 function loginValidator(u,p){
-	
+	$.ajax({
+		url:"http://200.105.154.18:5000/login",
+		data: {
+			usuario:u,
+			contrasena:p
+		},
+		type:"POST",
+		dataType:"json"
+		
+	});
 }

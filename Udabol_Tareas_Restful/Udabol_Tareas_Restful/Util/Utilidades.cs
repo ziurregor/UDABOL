@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 using System.Text;
 using Modelo;
@@ -99,5 +100,19 @@ namespace Util
             }
         }
 
+        //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
+        // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
+        //ModeloBase.ObtenerCampoValor(rol,"nombre");
+        public static Object ObtenerCampoValor(IModeloBase objeto, String campo)
+        {
+            //ToTitleCase ---> PascalCase
+            TextInfo textInfo = (new CultureInfo("es-BO", false)).TextInfo;
+            PropertyInfo propiedad = objeto.GetType().GetProperty(textInfo.ToTitleCase(campo));
+            if (propiedad != null)
+            {
+                return propiedad.GetValue(objeto);
+            }
+            return null;
+        }
     }
 }
