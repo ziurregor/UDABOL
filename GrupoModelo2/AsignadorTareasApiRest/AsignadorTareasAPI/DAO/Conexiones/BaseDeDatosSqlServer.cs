@@ -12,8 +12,7 @@ namespace DAO
 
         public BaseDeDatosSqlServer()
         {
-            _ruta = "Data Source=(local);Initial Catalog=AsignadorTareas;Persist Security Info=True;User ID=sa;Password=admin";
-            //_ruta = "Server=tcp:asignador-tareas.database.windows.net,1433;Initial Catalog=AsignadorTareasRepositorio;Persist Security Info=False;User ID=capamodelodos;Password=LosExiliados1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            _ruta = "Server=localhost;Database=AsignadorTareas;Trusted_Connection=True;";
         }
 
         public IConjuntoDB<Estado> Estado()
