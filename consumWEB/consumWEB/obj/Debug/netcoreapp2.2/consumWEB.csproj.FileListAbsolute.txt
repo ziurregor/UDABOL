@@ -1,0 +1,11 @@
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.deps.json
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.runtimeconfig.json
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.runtimeconfig.dev.json
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.dll
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.pdb
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.AssemblyInfoInputs.cache
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.AssemblyInfo.cs
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.csproj.CoreCompileInputs.cache
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.dll
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.pdb
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.genruntimeconfig.cache

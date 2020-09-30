@@ -1,0 +1,68 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/consumWEB.csproj": {}
+  },
+  "projects": {
+    "/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/consumWEB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/consumWEB.csproj",
+        "projectName": "consumWEB",
+        "projectPath": "/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/consumWEB.csproj",
+        "packagesPath": "/Users/rogerruizescobar/.nuget/packages/",
+        "outputPath": "/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/rogerruizescobar/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
