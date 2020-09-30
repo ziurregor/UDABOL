@@ -54,10 +54,9 @@ function loadTasks() {
 	})
 }
 
-function isLoggedIn() {
-	var s = G.cookie.get("sessionId");
-	if (s) {
-		var bd = G.base64.decode(s);
+function validSession(sesion) {
+	if (sesion) {
+		var bd = G.base64.decode(sesion);
 		bd = bd != null ? bd.split(",") : null;
 		if (bd != null && bd.length > 1 && bd[1] != null) {
 			console.log(bd[1]);
@@ -69,14 +68,23 @@ function isLoggedIn() {
 			if (dt > Date.now()) {
 				return true;
 			}
-			G.cookie.set("sessionId", "");
 		}
 	}
+	return false
+}
+
+function isLoggedIn() {
+	var s = G.cookie.get("sessionId");
+	if (validSession(s)) {
+		return true;
+	}
+	G.cookie.set("sessionId", "");
 	return false;
 }
-G.DBObj = false;
+
+// G.DBObj = false;
 $(window).on("load", function() {
-	G.DBObj = G.DB.startDB();
+	// G.DBObj = G.DB.startDB();
 	if (isLoggedIn()) {
 		loadTasks();
 	} else {

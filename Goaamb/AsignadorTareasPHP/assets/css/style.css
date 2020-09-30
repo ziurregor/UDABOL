@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+
+html {
+	font-family: roboto, arial, sans-serif;
+	font-size: 18px;
+}
+
+form label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+form label span {
+	display: inline-block;
+	width: 120px;
+}
+
+form label input[type="text"], form label input[type="password"] {
+	width: 190px;
+	border: 1px solid black;
+	height: 26px;
+	font-size: 18px;
+	padding: 2px;
+}
+
+#loginSection form {
+	width: 320px;
+	height: 120px;
+	position: absolute;
+	left: calc(50% - 160px);
+	top: calc(50% - 60px);
+}
+
+#loginSection form div {
+	text-align: center;
+}
+
+#taskSection .addTask {
+	display: none;
+	text-align: right;
+}
+
+#taskSection .addTask span {
+	display: inline-block;
+}
+
+#taskSection h1 {
+	text-align: center;
+	font-size: 3em;
+}
+
+#mensajeSection {
+	display: none;
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 2px 2px gray;
+	transform: translate(-50%, -50%);
+}
+
+#mensajeSection h1 {
+	position: absolute;
+	font-size: 1em;
+	top: 40%;
+	left: 55%;
+	transform: translate(-50%, -50%);
+}
