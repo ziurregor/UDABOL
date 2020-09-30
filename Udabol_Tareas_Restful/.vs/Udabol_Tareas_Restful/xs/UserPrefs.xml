@@ -1,10 +1,10 @@
-﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{6B084DB5-2FCE-4F8E-80F8-96B06FD58099}|Default">
+﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{8481CD45-59DB-4363-A3F5-DB058E9586CE}|Default">
   <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Udabol_Tareas_Restful" expanded="True">
-            <Node name="Udabol.ConsumeRest" expanded="True" />
+          <Node name="Udabol_Tareas_Restful" expanded="True" selected="True">
+            <Node name="Udabol_Tareas_Restful" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -21,6 +21,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Udabol.ConsumeRest PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Udabol__Tareas__Restful PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
