@@ -8,5 +8,7 @@ namespace Modelo
     {
         public int EstadoTareaID { get; set; }
         public int EstadoID { get; set; }
+
+        //public virtual Estado Estado { get; set; }
     }
 }

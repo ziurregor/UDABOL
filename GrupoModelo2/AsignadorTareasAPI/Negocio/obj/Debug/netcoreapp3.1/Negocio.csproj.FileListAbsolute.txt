@@ -12,3 +12,17 @@ C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Negocio\obj\Debug\netcor
 C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.pdb
 C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\DAO.dll
 C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\DAO.pdb
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\Negocio.deps.json
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\Negocio.dll
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\Negocio.pdb
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\DAO.dll
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\Modelo.dll
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\DAO.pdb
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\bin\Debug\netcoreapp3.1\Modelo.pdb
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.csprojAssemblyReference.cache
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.AssemblyInfoInputs.cache
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.AssemblyInfo.cs
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.csproj.CopyComplete
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.dll
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Negocio\obj\Debug\netcoreapp3.1\Negocio.pdb

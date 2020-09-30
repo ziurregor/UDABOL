@@ -46,19 +46,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\EliothWithoutH\\.nuget\\packages\\": {}
+    "C:\\Users\\Linette\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\Negocio.csproj",
+      "projectUniqueName": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Negocio\\Negocio.csproj",
       "projectName": "Negocio",
-      "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\Negocio.csproj",
-      "packagesPath": "C:\\Users\\EliothWithoutH\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Negocio\\obj\\",
+      "projectPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Negocio\\Negocio.csproj",
+      "packagesPath": "C:\\Users\\Linette\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Negocio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\EliothWithoutH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Linette\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -71,11 +71,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\DAO.csproj": {
-              "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\DAO\\DAO.csproj"
+            "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\DAO\\DAO.csproj": {
+              "projectPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\DAO\\DAO.csproj"
             },
-            "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {
-              "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj"
+            "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {
+              "projectPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Modelo\\Modelo.csproj"
             }
           }
         }

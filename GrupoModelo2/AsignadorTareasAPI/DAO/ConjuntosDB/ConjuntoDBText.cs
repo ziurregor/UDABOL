@@ -58,7 +58,7 @@ namespace DAO
         {
             PropertyInfo propInfoID = objeto.GetType().GetProperty(nombresColumnas[0]);
             string texto = $"{propInfoID.GetValue(objeto, null)}";
-            for (int i = 0; i < nombresColumnas.Length; i++)
+            for (int i = 1; i < nombresColumnas.Length; i++)
             {
                 PropertyInfo propInfo = objeto.GetType().GetProperty(nombresColumnas[i]);
                 texto += $"\t{propInfo.GetValue(objeto, null)}";
@@ -78,12 +78,12 @@ namespace DAO
             return texto;
         }
 
-        public void GuardarCambios()
+        public bool GuardarCambios()
         {
             Type tipo = typeof(T);
             string archivo = tipo.Name;
             string datos = ListaATexto();
-            _manejadorDeArchivos.EscribirArchivo($"..\\{archivo}.txt", datos);
+            return _manejadorDeArchivos.EscribirArchivo($"..\\{archivo}.txt", datos);
         }
 
         public T Crear(T elemento)
@@ -94,10 +94,15 @@ namespace DAO
             int maximo = (int) _datos.Max(o => o.GetType().GetProperty($"{clase}ID").GetValue(o));
             tipo.GetProperty($"{clase}ID").SetValue(elemento, maximo + 1, null);
             _datos.Add(elemento);
-            return elemento;
+            bool resultado = GuardarCambios();
+            if (resultado)
+            {
+                return elemento;
+            }
+            return default;
         }
 
-        public void Editar(int id, T elemento)
+        public T Editar(int id, T elemento)
         {
             T encontrado = ObtenerUno(id);
             Type tipo = typeof(T);
@@ -109,15 +114,26 @@ namespace DAO
                     propiedad.SetValue(encontrado, elemento.GetType().GetProperty(propiedad.Name).GetValue(elemento), null);
                 }
             }
+            bool resultado = GuardarCambios();
+            if (resultado)
+            {
+                return encontrado;
+            }
+            return default;
         }
 
-        public void Eliminar(int id)
+        public bool Eliminar(int id)
         {
             T encontrado = ObtenerUno(id);
             if (encontrado != null)
             {
-                _datos.Remove(encontrado);
+                bool eliminado = _datos.Remove(encontrado);
+                if (eliminado)
+                {
+                    return GuardarCambios();
+                }
             }
+            return false;
         }
 
         public T ObtenerUno(int id)

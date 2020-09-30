@@ -1,5 +1,4 @@
-UsuarioID	Username	Password	EstadoUsuarioID	RolID
+﻿UsuarioID	Username	Password	EstadoUsuarioID	RolID
 1	admin	admin	1	1
-2	linette	1234	1	2
-3	user	abcd	1	3
-4	jhon	4321	2	4
+2	linette	123456	1	2
+3	Jhonny	1234	2	1

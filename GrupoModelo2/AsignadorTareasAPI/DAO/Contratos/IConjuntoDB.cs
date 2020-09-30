@@ -9,8 +9,8 @@ namespace DAO
         public IEnumerable<T> ObtenerTodo();
         public T ObtenerUno(int id);
         public T Crear(T elemento);
-        public void Editar(int id, T elemento);
-        public void Eliminar(int id);
-        public void GuardarCambios();
+        public T Editar(int id, T elemento);
+        public bool Eliminar(int id);
+        public bool GuardarCambios();
     }
 }

@@ -19,7 +19,10 @@ namespace AsignadorTareasAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IBaseDeDatos, BaseDeDatosTxt>();
+
+            services.AddTransient<IManejadorTareas, ManejadorTareas>();
             services.AddTransient<IManejadorRoles, ManejadorRoles>();
+            services.AddTransient<IManejadorEstados, ManejadorEstados>();
             services.AddTransient<IManejadorUsuarios, ManejadorUsuarios>();
             services.AddControllers();
         }
@@ -33,6 +36,8 @@ namespace AsignadorTareasAPI
             }
 
             app.UseRouting();
+            app.UseHttpsRedirection();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

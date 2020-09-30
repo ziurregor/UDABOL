@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {}
+    "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {
+    "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Modelo\\Modelo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj",
+        "projectUniqueName": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Modelo\\Modelo.csproj",
         "projectName": "Modelo",
-        "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\Modelo.csproj",
-        "packagesPath": "C:\\Users\\EliothWithoutH\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasAPI\\Modelo\\obj\\",
+        "projectPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Modelo\\Modelo.csproj",
+        "packagesPath": "C:\\Users\\Linette\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasAPI\\Modelo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\EliothWithoutH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Linette\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

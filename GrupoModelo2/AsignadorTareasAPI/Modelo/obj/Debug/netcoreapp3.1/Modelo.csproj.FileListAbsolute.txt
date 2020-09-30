@@ -7,3 +7,12 @@ C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Modelo\obj\Debug\netcore
 C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.csproj.CoreCompileInputs.cache
 C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.dll
 C:\Users\EliothWithoutH\source\repos\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.pdb
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\bin\Debug\netcoreapp3.1\Modelo.deps.json
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\bin\Debug\netcoreapp3.1\Modelo.dll
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\bin\Debug\netcoreapp3.1\Modelo.pdb
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.csprojAssemblyReference.cache
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.AssemblyInfoInputs.cache
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.AssemblyInfo.cs
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.csproj.CoreCompileInputs.cache
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.dll
+C:\Users\Linette\src\RepositorioDiplomadoSI\UDABOL\GrupoModelo2\AsignadorTareasAPI\Modelo\obj\Debug\netcoreapp3.1\Modelo.pdb

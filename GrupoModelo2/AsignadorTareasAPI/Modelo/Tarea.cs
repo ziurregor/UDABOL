@@ -12,6 +12,7 @@ namespace Modelo
         public int EstadoTareaID { get; set; }
         public int PersonaID { get; set; }
 
-        public EstadoTarea EstadoTarea { get; set; }
+        //public virtual EstadoTarea EstadoTarea { get; set; }
+        //public virtual Persona Persona { get; set; }
     }
 }

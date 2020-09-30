@@ -12,7 +12,7 @@ namespace Modelo
         public int EstadoUsuarioID { get; set; }
         public int RolID { get; set; }
 
-        public virtual EstadoUsuario EstadoUsuario { get; set; }
-        public virtual Rol Rol { get; set; }
+        //public virtual EstadoUsuario EstadoUsuario { get; set; }
+        //public virtual Rol Rol { get; set; }
     }
 }

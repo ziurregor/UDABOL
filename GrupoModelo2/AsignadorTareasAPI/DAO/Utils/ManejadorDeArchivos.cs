@@ -27,7 +27,7 @@ namespace DAO
         }
 
         [STAThread]
-        public void EscribirArchivo(string ruta, string datos)
+        public bool EscribirArchivo(string ruta, string datos)
         {
             try
             {
@@ -35,10 +35,12 @@ namespace DAO
                 StreamWriter sw = new StreamWriter(ruta, false, Encoding.UTF8);
                 sw.Write(datos);
                 sw.Close();
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Exception: " + e.Message);
+                return false;
             }
         }
     }

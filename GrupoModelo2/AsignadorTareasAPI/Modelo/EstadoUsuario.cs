@@ -9,6 +9,6 @@ namespace Modelo
         public int EstadoUsuarioID { get; set; }
         public int EstadoID { get; set; }
 
-        //public virtual ICollection<Estado> Estado { get; set; }
+        //public virtual Estado Estado { get; set; }
     }
 }
