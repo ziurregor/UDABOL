@@ -1,0 +1,29 @@
+﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{6B084DB5-2FCE-4F8E-80F8-96B06FD58099}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Udabol_Tareas_Restful" expanded="True">
+            <Node name="Udabol.ConsumeRest" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>usuario</Value>
+          <Value>ABase64(MD5(llave) + MD5(contrasena))</Value>
+          <Value>_usuario</Value>
+          <Value>_usuario.Contrasena.Equals(contrasena)</Value>
+          <Value>_usuario != null</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Udabol.ConsumeRest PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

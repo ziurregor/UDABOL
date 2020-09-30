@@ -1,31 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful.csproj": {}
+    "/Users/rogerruizescobar/Projects/UDABOL/UDABOL/Udabol_Tareas_Restful/Udabol_Tareas_Restful/Udabol_Tareas_Restful.csproj": {}
   },
   "projects": {
-    "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful.csproj": {
+    "/Users/rogerruizescobar/Projects/UDABOL/UDABOL/Udabol_Tareas_Restful/Udabol_Tareas_Restful/Udabol_Tareas_Restful.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful.csproj",
+        "projectUniqueName": "/Users/rogerruizescobar/Projects/UDABOL/UDABOL/Udabol_Tareas_Restful/Udabol_Tareas_Restful/Udabol_Tareas_Restful.csproj",
         "projectName": "Udabol_Tareas_Restful",
-        "projectPath": "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful.csproj",
-        "packagesPath": "C:\\Users\\AlvaroJusto\\.nuget\\packages\\",
-        "outputPath": "Y:\\Udabol\\Sistemas de Informacion y Sistemas Inteligentes\\proyecto\\UDABOL\\Udabol_Tareas_Restful\\Udabol_Tareas_Restful\\obj\\",
+        "projectPath": "/Users/rogerruizescobar/Projects/UDABOL/UDABOL/Udabol_Tareas_Restful/Udabol_Tareas_Restful/Udabol_Tareas_Restful.csproj",
+        "packagesPath": "/Users/rogerruizescobar/.nuget/packages/",
+        "outputPath": "/Users/rogerruizescobar/Projects/UDABOL/UDABOL/Udabol_Tareas_Restful/Udabol_Tareas_Restful/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\AlvaroJusto\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/rogerruizescobar/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -79,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     }
