@@ -34,3 +34,17 @@ form label input[type="text"], form label input[type="password"] {
 #loginSection form div {
 	text-align: center;
 }
+
+#taskSection .addTask {
+	display: none;
+	text-align: right;
+}
+
+#taskSection .addTask span {
+	display: inline-block;
+}
+
+#taskSection h1 {
+	text-align: center;
+	font-size: 3em;
+}
