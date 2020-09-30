@@ -1,3 +1,0 @@
-RolID	NombreRol
-1	Admin
-2	Simple

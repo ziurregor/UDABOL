@@ -1,4 +1,0 @@
-﻿TareaID	NombreTarea	Fecha	EstadoTareaID	PersonaID
-1	Tarea1	10/10/2020 12:00:00 AM	1	2
-2	Tarea2	10/10/2020 12:00:00 AM	2	3
-3	Tarea3	10/10/2020 12:00:00 AM	3	4

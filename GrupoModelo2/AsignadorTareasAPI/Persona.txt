@@ -1,5 +1,0 @@
-﻿PersonaID	Nombres	Apellidos	UsuarioID
-1	Admin	Admin	1
-2	Linette	Vidal Rodriguez	2
-3	Jhon	Doe	3
-4	Dante Maleante	Tonelada Andante	4
