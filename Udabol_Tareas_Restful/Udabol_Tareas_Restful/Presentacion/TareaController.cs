@@ -45,6 +45,18 @@ namespace Controllers
             return Mensaje.SESION_INCORRECTA;
         }
 
+        // GET: Tarea/usuario
+        [HttpGet("usuario/{sesionId}")]
+        public Object GetUsuarioTareas(String sesionId)
+        {
+            Usuario usuario = Sesion.VerificarSesion(sesionId);
+            if (usuario != null)
+            {
+                return ModeloFactory.Obtener<Tarea>(new KeyValuePair<String, String>("usuario", usuario.Id.ToString()));
+            }
+            return Mensaje.SESION_INCORRECTA;
+        }
+
         // PUT: Tarea/5
         [HttpPut("{id}/{sesionId}")]
         public Mensaje PutTarea(int id,String sesionId, JsonElement objeto)

@@ -42,13 +42,14 @@ namespace Controllers
             return Mensaje.SESION_INCORRECTA;
         }
 
-        // GET: Usuario/tareas/5
-        [HttpGet("tareas/{id}/{sesionId}")]
-        public Object GetUsuarioTareas(int id, String sesionId)
+        // GET: Usuario/tareas
+        [HttpGet("tareas/{sesionId}")]
+        public Object GetUsuarioTareas(String sesionId)
         {
-            if (Sesion.VerificarSesion(sesionId, true) != null)
+            Usuario usuario = Sesion.VerificarSesion(sesionId);
+            if (usuario!= null)
             {
-                return ModeloFactory.Obtener<Tarea>(new KeyValuePair<String, String>("usuario", id.ToString()));
+                return ModeloFactory.Obtener<Tarea>(new KeyValuePair<String, String>("usuario", usuario.Id.ToString()));
             }
             return Mensaje.SESION_INCORRECTA;
         }

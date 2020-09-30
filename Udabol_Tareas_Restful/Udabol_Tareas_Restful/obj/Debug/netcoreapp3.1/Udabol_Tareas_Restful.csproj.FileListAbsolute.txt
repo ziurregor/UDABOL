@@ -7,6 +7,7 @@ Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\Udabol_Tareas_Restful.runtimeconfig.dev.json
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\Udabol_Tareas_Restful.dll
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\bin\Debug\netcoreapp3.1\Udabol_Tareas_Restful.pdb
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\obj\Debug\netcoreapp3.1\Udabol_Tareas_Restful.csprojAssemblyReference.cache
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\obj\Debug\netcoreapp3.1\Udabol_Tareas_Restful.AssemblyInfoInputs.cache
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\obj\Debug\netcoreapp3.1\Udabol_Tareas_Restful.AssemblyInfo.cs
 Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\Udabol_Tareas_Restful\Udabol_Tareas_Restful\obj\Debug\netcoreapp3.1\Udabol_Tareas_Restful.RazorTargetAssemblyInfo.cache
