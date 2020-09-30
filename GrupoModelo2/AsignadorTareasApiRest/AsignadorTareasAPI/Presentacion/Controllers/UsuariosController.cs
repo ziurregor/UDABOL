@@ -65,7 +65,7 @@ namespace Presentacion.Controllers
             bool result = _manejador.EliminarUsuario(id);
             if (result)
             {
-                return Ok($"Usuario con ID: {id}, fue eliminado");
+                return Ok(result);
             }
             return NotFound($"Usuario con ID: {id}, no fue encontrado");
         }

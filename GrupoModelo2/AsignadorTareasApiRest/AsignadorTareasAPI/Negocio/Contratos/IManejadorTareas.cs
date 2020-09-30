@@ -9,8 +9,8 @@ namespace Negocio
     {
         public IEnumerable<MostrarTarea> ObtenerTareas();
         public MostrarTarea ObtenerTareaPorID(int id);
-        public Tarea CrearTarea(Tarea tarea);
-        public Tarea ActualizarTarea(int id, Tarea tarea);
+        public MostrarTarea CrearTarea(Tarea tarea);
+        public MostrarTarea ActualizarTarea(int id, Tarea tarea);
         public bool EliminarTarea(int id);
     }
 }

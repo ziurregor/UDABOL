@@ -10,9 +10,9 @@ namespace DAO
     {
         private string _ruta;
 
-        public BaseDeDatosSqlServer()
+        public BaseDeDatosSqlServer(string ruta)
         {
-            _ruta = "Server=localhost;Database=AsignadorTareas;Trusted_Connection=True;";
+            _ruta = ruta;
         }
 
         public IConjuntoDB<Estado> Estado()

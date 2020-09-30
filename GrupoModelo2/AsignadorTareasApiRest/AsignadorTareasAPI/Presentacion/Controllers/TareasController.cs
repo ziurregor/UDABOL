@@ -40,20 +40,22 @@ namespace Presentacion.Controllers
 
         // POST api/<Controller>
         [HttpPost]
-        public ActionResult<Tarea> Post([FromBody] Tarea tarea)
+        public ActionResult<MostrarTarea> Post([FromBody] Tarea tarea)
         {
-            return Ok(_manejador.CrearTarea(tarea));
+            MostrarTarea resultado = _manejador.CrearTarea(tarea);
+            if (resultado == null) BadRequest();
+            return Ok(resultado);
         }
 
         // PUT api/<Controller>/5
         [HttpPut("{id}")]
-        public ActionResult<Tarea> Put(int id, [FromBody] Tarea tarea)
+        public ActionResult<MostrarTarea> Put(int id, [FromBody] Tarea tarea)
         {
             if ( id != tarea.TareaID)
             {
                 return BadRequest($"Laos id's no coinciden");
             }
-            Tarea result = _manejador.ActualizarTarea(id, tarea);
+            MostrarTarea result = _manejador.ActualizarTarea(id, tarea);
             if (result == null)
             {
                 return BadRequest($"La tarea con ID: '{id}', no fue encontrada");
@@ -68,9 +70,9 @@ namespace Presentacion.Controllers
             bool result = _manejador.EliminarTarea(id);
             if (result)
             {
-                return Ok($"Tarea con ID: {id}, fue eliminada ");
+                return Ok(result);
             }
-            return NotFound($"Tarea con ID: {id}, no fue encontrada ");
+            return NotFound($"La tarea con ID: '{id}', no fue encontrada");
         }
     }
 }

@@ -10,9 +10,9 @@ namespace DAO
     {
         private string _ruta;
 
-        public BaseDeDatosTxt()
+        public BaseDeDatosTxt(string ruta)
         {
-            _ruta = "BaseDeDatosTxt";
+            _ruta = ruta;
         }
 
         public IConjuntoDB<Rol> Rol()

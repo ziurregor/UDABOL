@@ -68,6 +68,14 @@ namespace Negocio
 
         public bool EliminarUsuario(int id)
         {
+            Persona persona = _context.Persona().ObtenerTodo().FirstOrDefault(p => p.UsuarioID == id);
+            if (persona == null) return false;
+            IEnumerable<Tarea> tareas = _context.Tarea().ObtenerTodo().Where(t => t.PersonaID == persona.PersonaID);
+            foreach (Tarea tarea in tareas)
+            {
+                _context.Tarea().Eliminar(tarea.TareaID);
+            }
+            _context.Persona().Eliminar(persona.PersonaID);
             return _context.Usuario().Eliminar(id);
         }
 

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj": {}
+    "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj": {
+    "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj",
         "projectName": "AsignadorTareasAPI",
-        "projectPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj",
-        "packagesPath": "C:\\Users\\EliothWithoutH\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EliothWithoutH\\source\\repos\\AsignadorTareasApiRest\\AsignadorTareasAPI\\obj\\",
+        "projectPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasApiRest\\AsignadorTareasAPI\\AsignadorTareasAPI.csproj",
+        "packagesPath": "C:\\Users\\Linette\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Linette\\src\\RepositorioDiplomadoSI\\UDABOL\\GrupoModelo2\\AsignadorTareasApiRest\\AsignadorTareasAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\EliothWithoutH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Linette\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

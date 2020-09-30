@@ -28,19 +28,28 @@ namespace AsignadorTareasAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IBaseDeDatos, BaseDeDatosSqlServer>();
-            //services.AddTransient<IBaseDeDatos, BaseDeDatosTxt>();
+            //RUTAS
+            string rutaDeAlmacenamientoEnTexto = "BaseDeDatosTxt";
+            string cadenaDeConexionSqlServer = "Server = localhost\\MSSQLSERVER01; Database = AsignadorTareas; Trusted_Connection = True;";
+            //string cadenaDeConexionSqlServer = "Server = localhost; Database = AsignadorTareas; Trusted_Connection = True;";
+            //CONEXION A BASE DE DATOS
+            services.AddTransient<IBaseDeDatos>(options => new BaseDeDatosSqlServer(cadenaDeConexionSqlServer));
+            //services.AddTransient<IBaseDeDatos>(options => new BaseDeDatosTxt(rutaDeAlmacenamientoEnTexto));
 
+            //DECLARACION DE MANEJADORES (SERVICIOS) PARA REALIZAR INYECCION DE DEPENDENCIAS EN LOS CONTROLADORES
             services.AddTransient<IManejadorTareas, ManejadorTareas>();
             services.AddTransient<IManejadorRoles, ManejadorRoles>();
             services.AddTransient<IManejadorEstados, ManejadorEstados>();
             services.AddTransient<IManejadorUsuarios, ManejadorUsuarios>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
                     builder => builder
                     .AllowAnyOrigin()
-                    .AllowAnyMethod());
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
             });
 
             services.AddControllers();
