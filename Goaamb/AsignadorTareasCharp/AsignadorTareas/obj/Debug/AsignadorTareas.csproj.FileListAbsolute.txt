@@ -1,0 +1,13 @@
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\bin\Debug\AsignadorTareas.exe.config
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\bin\Debug\AsignadorTareas.exe
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\bin\Debug\AsignadorTareas.pdb
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.csprojAssemblyReference.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.LoginForm.resources
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.Properties.Resources.resources
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.csproj.GenerateResource.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.csproj.CoreCompileInputs.cache
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.exe
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.pdb
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\bin\Debug\Newtonsoft.Json.dll
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\bin\Debug\Newtonsoft.Json.xml
+Y:\Udabol\Sistemas de Informacion y Sistemas Inteligentes\proyecto\UDABOL\AsignadorTareas\AsignadorTareas\obj\Debug\AsignadorTareas.csproj.CopyComplete
