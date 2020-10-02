@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{EC0BD9FC-D5EA-43EA-894C-32ECF8CC4A99}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="consumWEB/Program.cs">
+    <Files>
+      <File FileName="consumWEB/Program.cs" Line="42" Column="1" />
+      <File FileName="consumWEB/Users.cs" />
+      <File FileName="consumWEB/Tareas.cs" />
+      <File FileName="consumWEB/ModeloBase.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="consumWEB" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>mat</Value>
+          <Value>vec</Value>
+          <Value>json</Value>
+          <Value>jo["texto"][0]</Value>
+          <Value>jo</Value>
+          <Value>llave</Value>
+          <Value>json</Value>
+          <Value>jo1</Value>
+          <Value>jsonArray</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.consumWEB PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/Program.cs" relfile="consumWEB/Program.cs" line="21" column="1" />
+      <Breakpoint file="/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/Program.cs" relfile="consumWEB/Program.cs" line="41" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

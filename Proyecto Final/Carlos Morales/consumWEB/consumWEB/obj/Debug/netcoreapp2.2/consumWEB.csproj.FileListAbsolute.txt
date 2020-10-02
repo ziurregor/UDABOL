@@ -1,0 +1,23 @@
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.deps.json
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.runtimeconfig.json
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.runtimeconfig.dev.json
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.dll
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/bin/Debug/netcoreapp2.2/consumWEB.pdb
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.AssemblyInfoInputs.cache
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.AssemblyInfo.cs
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.csproj.CoreCompileInputs.cache
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.dll
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.pdb
+/Users/rogerruizescobar/Documents/Docencia/Docencia UPDS/para conusmir/consumWEB/consumWEB/obj/Debug/netcoreapp2.2/consumWEB.genruntimeconfig.cache
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\bin\Debug\netcoreapp2.2\consumWEB.deps.json
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\bin\Debug\netcoreapp2.2\consumWEB.runtimeconfig.json
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\bin\Debug\netcoreapp2.2\consumWEB.runtimeconfig.dev.json
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\bin\Debug\netcoreapp2.2\consumWEB.dll
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\bin\Debug\netcoreapp2.2\consumWEB.pdb
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\obj\Debug\netcoreapp2.2\consumWEB.csprojAssemblyReference.cache
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\obj\Debug\netcoreapp2.2\consumWEB.AssemblyInfoInputs.cache
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\obj\Debug\netcoreapp2.2\consumWEB.AssemblyInfo.cs
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\obj\Debug\netcoreapp2.2\consumWEB.csproj.CoreCompileInputs.cache
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\obj\Debug\netcoreapp2.2\consumWEB.dll
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\obj\Debug\netcoreapp2.2\consumWEB.pdb
+C:\Users\HP\Downloads\U Actualizaciones del Proy\UDABOL-master\consumWEB\consumWEB\obj\Debug\netcoreapp2.2\consumWEB.genruntimeconfig.cache
