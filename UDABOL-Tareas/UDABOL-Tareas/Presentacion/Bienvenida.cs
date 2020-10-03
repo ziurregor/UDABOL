@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+<<<<<<< HEAD
 using Dao;
+=======
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
 
 namespace Presentacion
 {
@@ -25,8 +28,12 @@ namespace Presentacion
                     case "1":
                         Login.MostrarLogin();
                         break;
+<<<<<<< HEAD
                     default:
                         ConexionFactory.GuardarConexiones();
+=======
+                    case "2":
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
                         return;
                 }
             }

@@ -6,7 +6,11 @@ using Dao;
 
 namespace Modelo
 {
+<<<<<<< HEAD
     public class Tarea :ModeloBase
+=======
+    class Tarea :ModeloBase
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
     {
         private Int32 _id;
         private String _fecha;
@@ -56,7 +60,11 @@ namespace Modelo
             _usuario=usuario;
         }
 
+<<<<<<< HEAD
         public Int32 ObtenerId()
+=======
+        public Usuario ObtenerId()
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         {
             return _id;
         }
@@ -79,7 +87,11 @@ namespace Modelo
             return _id.ToString() + "\t" + _fecha + "\t" + _nombre + "\t" + _usuario.ObtenerId().ToString() + "\t" + _estado;
         }
         override
+<<<<<<< HEAD
         public ModeloBase leerTexto(string texto)
+=======
+        public IObjetoTexto leerTexto(string texto)
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         {
             String[] columnas = texto.Split("\t");
 

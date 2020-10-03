@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Reflection;
+=======
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
 using Modelo;
 
 namespace Negocio
 {
+<<<<<<< HEAD
     public class ManejadorTareas:IManejadorTareas
     {
         public KeyValuePair<Tarea, List<String>> VerificarModificabilidad(Usuario usuario, List<ModeloBase> lista, String idTarea)
@@ -68,5 +72,22 @@ namespace Negocio
             }
             return null;
         }
+=======
+    internal class ManejadorTareas
+    {
+        internal  KeyValuePair<Tarea, List<String>> VerificarModificabilidad(Usuario usuario, List<ModeloBase> lista, String idTarea)
+        {
+            KeyValuePair<Tarea, List<String>> tareaLista = new KeyValuePair<Tarea, List<String>>();
+            if (usuario != null && lista != null) {
+
+                foreach (Tarea tarea in lista)
+                {
+                    
+                }
+            }
+            return tareaLista;
+        }
+
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
     }
 }

@@ -74,7 +74,12 @@ namespace Dao
                 {
                     String contenido = "";
                     foreach (ModeloBase _objeto in lista) {
+<<<<<<< HEAD
                          contenido+= _objeto.guardarTexto()+"\n";
+=======
+                        IObjetoTexto _objetoTexto = (IObjetoTexto)_objeto;
+                         contenido+= _objetoTexto.guardarTexto()+"\n";
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
                     }
                     File.WriteAllText(_archivo, contenido);
                     _contenido = contenido;
@@ -107,6 +112,10 @@ namespace Dao
             try
             {
                 String[] lineas = _contenido.Split("\n");
+<<<<<<< HEAD
+=======
+                List<ModeloBase> lista = new List<ModeloBase>();
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
                 for (int i=0;i<lineas.Length;i++) {
                     lineas[i] = lineas[i].Trim();
                     ModeloBase _objeto = (ModeloBase)ModeloBase.darInstancia(_tipo);

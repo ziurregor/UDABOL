@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Globalization;
+=======
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -23,20 +26,37 @@ namespace Modelo
         // Estado: Habilitado
         // Insert Usuario(id,nombre,contrasena,estado)values(1,Fulanito de tal,******,Habilitado)
 
+<<<<<<< HEAD
         private static Dictionary<String, List<ModeloBase>> listaDeListas;
 
 
+=======
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
 
         private IConexion _conexion;
 
 
 
+<<<<<<< HEAD
         public ModeloBase() {//Se pide el objeto correspondiente a cada Modelo que nos provee ConexionFactory
             _conexion = ConexionFactory.DarConexion(this.GetType());
+=======
+        public ModeloBase() {
+            _conexion = new ConexionTexto();
+            _conexion.Conectar(this.GetType().Name+".txt",this.GetType());
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         }
 
 
 
+<<<<<<< HEAD
+=======
+        ~ModeloBase() {
+            _conexion.Guardar();
+        }
+
+
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         public Boolean Crear(Dictionary<String,String> campos,List<ModeloBase> lista) {
             Type tipo = this.GetType();
 
@@ -110,6 +130,7 @@ namespace Modelo
 
 
         public ModeloBase Obtener(KeyValuePair<String,String> condicion) {
+<<<<<<< HEAD
             return Obtener(condicion, this.GetType());
         }
 
@@ -137,11 +158,21 @@ namespace Modelo
                             return objeto;
                         }
                     }
+=======
+            List<ModeloBase> lista = this.Listar();
+            Type tipo = this.GetType();
+            PropertyInfo[] propiedades = tipo.GetProperties();
+            foreach (ModeloBase objeto in lista) {
+                PropertyInfo propiedad = tipo.GetProperty(condicion.Key);
+                if (propiedad.GetValue(objeto).Equals(condicion.Value.ToString())) {
+                    return objeto;
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
                 }
             }
             return null;
         }
 
+<<<<<<< HEAD
         //Se obtiene un valor de un campo de un objeto enviandole solamente el nombre
         // Si el objeto es Rol... y le queremos obtener el valor del campo nombre
         //ModeloBase.ObtenerCampoValor(rol,"nombre");
@@ -191,6 +222,8 @@ namespace Modelo
         }
 
 
+=======
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
 
         //delete from Usuario where id=2
 
@@ -218,14 +251,18 @@ namespace Modelo
             return false;
         }
 
+<<<<<<< HEAD
         // Crear Una Instancia automaticamente
         //ModeloBase.darInstancia("Modelo.Rol")----->new Rol()
         //ModeloBase.darInstancia("Modelo.Usuario")----->new Usuario()
         //Factory Method--->Patron de diseño
+=======
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         public static Object darInstancia(Type tipo) {
             return Activator.CreateInstance(tipo);
         }
 
+<<<<<<< HEAD
         public static Object darInstancia(String tipo)
         {
             return Activator.CreateInstance(Type.GetType(tipo));
@@ -235,5 +272,11 @@ namespace Modelo
         public abstract string guardarTexto();
 
         public abstract ModeloBase leerTexto(string texto);
+=======
+
+        public abstract string guardarTexto();
+
+        public abstract IObjetoTexto leerTexto(string texto);
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
     }
 }

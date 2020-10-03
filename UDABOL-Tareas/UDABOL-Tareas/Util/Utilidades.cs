@@ -30,6 +30,7 @@ namespace Util
             System.Console.WriteLine(texto);
         }
 
+<<<<<<< HEAD
         public static String entrada(String texto)
         {
             salida(texto);
@@ -38,5 +39,11 @@ namespace Util
 
 
 
+=======
+        public static String entrada()
+        {
+            return System.Console.ReadLine();
+        }
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
     }
 }

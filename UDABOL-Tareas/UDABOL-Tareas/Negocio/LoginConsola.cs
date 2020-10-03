@@ -8,6 +8,7 @@ namespace Negocio
 {
     public class LoginConsola : ILogin
     {
+<<<<<<< HEAD
         public KeyValuePair<Usuario, List<ModeloBase>> LoginUsuario( String _cadenaUsuario,String _cadenaContrasena) {
             System.Console.Out.WriteLine("Se esta Autenticando espere por favor...");
             Usuario _usuario = AutenticacionUsuario(_cadenaUsuario, _cadenaContrasena);
@@ -17,6 +18,15 @@ namespace Negocio
                 return new KeyValuePair<Usuario, List<ModeloBase>>(_usuario, MostrarManejadorTareas(_rol));
             }
             return new KeyValuePair<Usuario, List<ModeloBase>>();
+=======
+        Usuario _usuario;
+
+        public KeyValuePair<Usuario, List<ModeloBase>> LoginUsuario( String _cadenaUsuario,String _cadenaContrasena) {
+            System.Console.Out.WriteLine("Se esta Autenticando espere por favor...");
+            Usuario _usuario = AutenticacionUsuario(_cadenaUsuario, _cadenaContrasena);
+            Rol _rol = VerificarRolUsuario(_usuario);
+            return new KeyValuePair<Usuario, List<ModeloBase>>(_usuario, MostrarManejadorTareas(_rol));
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         }
 
         public Usuario AutenticacionUsuario(string usuario, string contrasena)

@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Modelo
 {
+<<<<<<< HEAD
     public class Usuario : ModeloBase
+=======
+    class Usuario : ModeloBase
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
     {
 
         private Int32 _id;
@@ -45,6 +49,7 @@ namespace Modelo
             _contrasena = contrasena;
         }
 
+<<<<<<< HEAD
         public static Usuario ObtenerUnUsuario(string usuario, string cadenaEncriptada)
         {
 
@@ -56,6 +61,8 @@ namespace Modelo
             return null;
         }
 
+=======
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         public String ObtenerEstado()
         {
             return _estado;
@@ -83,6 +90,7 @@ namespace Modelo
             return _id + "\t" + _nombre + "\t" + _contrasena + "\t" + _estado + "\t"+_rol.ObtenerId().ToString() ;
         }
 
+<<<<<<< HEAD
         public override ModeloBase leerTexto(string texto)
         {
             String[] columnas = texto.Split("\t");
@@ -99,6 +107,19 @@ namespace Modelo
                 return usuario;
             }
             return null;
+=======
+        public override IObjetoTexto leerTexto(string texto)
+        {
+            String[] columnas = texto.Split("\t");
+
+            Usuario usuario = new Usuario();
+            usuario._id = Int32.Parse(columnas[0]);
+            usuario._nombre = columnas[1];
+            usuario._contrasena = columnas[2];
+            usuario._estado = columnas[3];
+            usuario._rol = (Rol)(new Rol()).Obtener(new KeyValuePair<string, string>("_id",columnas[4])) ;
+            return usuario;
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         }
     }
 }

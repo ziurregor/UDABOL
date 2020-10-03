@@ -5,11 +5,16 @@ using System.Text;
 
 namespace Modelo
 {
+<<<<<<< HEAD
     public class Rol :ModeloBase
+=======
+    class Rol :ModeloBase
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
     {
 
         private Int32 _id;//0
         private String _nombre;//Super Usuario/Usuario Comun
+<<<<<<< HEAD
         private Boolean _superUsuario;
 
 
@@ -29,6 +34,11 @@ namespace Modelo
             _superUsuario = superUsuario;
         }
 
+=======
+
+
+        //Getters and Setter
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         public String ObtenerNombre()//Get
         {
             return _nombre;
@@ -57,6 +67,7 @@ namespace Modelo
         }
 
         override
+<<<<<<< HEAD
         public ModeloBase leerTexto(string texto)
         {
             String[] columnas = texto.Split("\t");
@@ -70,6 +81,16 @@ namespace Modelo
                 }; return rol;
             }
             return null;
+=======
+        public IObjetoTexto leerTexto(string texto)
+        {
+            String[] columnas = texto.Split("\t");
+
+            Rol rol = new Rol();
+            rol._id = Int32.Parse(columnas[0]);
+            rol._nombre = columnas[1];
+            return rol;
+>>>>>>> 28de24cf3f69704a0d9b5560ef35ea01244dc81e
         }
     }
 }
