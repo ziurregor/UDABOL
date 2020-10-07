@@ -66,5 +66,5 @@ class Graph:
 def main():
     print('%.3f' % Graph.construct_from_input().root_cost(MaxHeap.construct_init_heap_from_input()))
 
-    if __name__ == "__main__":
+if __name__ == "__main__":
     main()
